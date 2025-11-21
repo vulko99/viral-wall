@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Viral $1 Wall – Internet Chaos 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="The Viral $1 Wall – buy a tiny spot on the most chaotic $1 wall on the internet. Add your logo, meme, project or link and become part of Internet history 2025."
+  />
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff6fd8, #ffcc70, #00f5a0, #00d4ff);
+      --dark: #0b0b10;
+      --light: #fdfdfd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111, #000);
+      color: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.25rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: var(--bg-gradient);
+      opacity: 0.2;
+      filter: blur(40px);
+      z-index: -1;
+      animation: floatBg 18s linear infinite alternate;
+    }
+
+    @keyframes floatBg {
+      from {
+        transform: translate3d(-5%, -5%, 0) rotate(0deg);
+      }
+      to {
+        transform: translate3d(5%, 5%, 0) rotate(5deg);
+      }
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00ffb3;
+      box-shadow: 0 0 8px #00ffb3;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 span.highlight {
+      background: var(--bg-gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      max-width: 640px;
+      margin: 0.5rem auto 1.6rem;
+      font-size: 0.98rem;
+      opacity: 0.9;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.75rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease, color 0.12s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-primary {
+      background: var(--bg-gradient);
+      color: #111;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+    }
+
+    .btn-ghost {
+      background: rgba(0, 0, 0, 0.6);
+      color: #f5f5f5;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .hero-bottom {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .hero-bottom strong {
+      color: #ffeb3b;
+    }
+
+    .section {
+      padding: 2rem 1.25rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.3rem;
+    }
+
+    .counter {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .counter span {
+      font-weight: 600;
+      color: #ffeb3b;
+    }
+
+    /* GRID */
+
+    .grid-wrapper {
+      background: radial-gradient(circle at top left, #ff6fd8 0, #111 40%),
+        radial-gradient(circle at bottom right, #00d4ff 0, #000 45%);
+      border-radius: 22px;
+      padding: 1rem;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .grid-inner {
+      background: rgba(5, 5, 10, 0.85);
+      border-radius: 18px;
+      padding: 0.6rem;
+      overflow: hidden;
+      max-height: 70vh;
+    }
+
+    .pixel-grid {
+      display: grid;
+      grid-template-columns: repeat(40, minmax(0, 1fr));
+      grid-auto-rows: 14px;
+      gap: 1px;
+      overflow: auto;
+      border-radius: 14px;
+    }
+
+    .pixel-cell {
+      cursor: pointer;
+      border-radius: 2px;
+      transition: transform 0.08s ease, box-shadow 0.08s ease,
+        filter 0.08s ease;
+      position: relative;
+    }
+
+    .pixel-cell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      mix-blend-mode: multiply;
+    }
+
+    .pixel-cell:hover {
+      transform: scale(1.4);
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      filter: brightness(1.15);
+    }
+
+    .pixel-cell.filled {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .pixel-cell.filled::before {
+      content: "";
+      position: absolute;
+      inset: 20%;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      opacity: 0.9;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+    }
+
+    .legend-swatch.free {
+      background: linear-gradient(135deg, #52ff9f, #00c3ff);
+    }
+
+    .legend-swatch.basic {
+      background: linear-gradient(135deg, #ffcc70, #ff6f61);
+    }
+
+    .legend-swatch.premium {
+      background: linear-gradient(135deg, #c471f5, #fa71cd);
+    }
+
+    /* INFO / PRICING */
+
+    .info-grid {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .info-grid {
+        grid-template-columns: 2fr 1.4fr;
+      }
+    }
+
+    .info-card {
+      background: radial-gradient(circle at top left, #222 0, #090909 55%);
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+      font-size: 0.92rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .info-list li::before {
+      content: "✦";
+      margin-right: 0.4rem;
+      color: #ffcc70;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      padding: 0.3rem 0;
+    }
+
+    .price-tier-name {
+      font-weight: 600;
+    }
+
+    .price-tier-value {
+      font-weight: 600;
+      color: #ffeb3b;
+    }
+
+    .footnote {
+      font-size: 0.8rem;
+      opacity: 0.72;
+      margin-top: 0.6rem;
+    }
+
+    /* MODAL */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    .modal {
+      background: radial-gradient(circle at top left, #1e1b2f, #050509);
+      border-radius: 22px;
+      padding: 1.4rem 1.5rem;
+      max-width: 420px;
+      width: 92%;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      position: relative;
+    }
+
+    .modal h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1.15rem;
+    }
+
+    .modal p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+
+    .modal-tagline {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .modal-label {
+      opacity: 0.7;
+    }
+
+    .modal-value {
+      font-weight: 600;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.9rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.8rem;
+      background: transparent;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .modal-small {
+      font-size: 0.78rem;
+      opacity: 0.75;
+      margin-top: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        INTERNET ART EXPERIMENT • 2025 EDITION
+      </div>
+      <h1>
+        <span class="highlight">The Viral $1 Wall</span><br />
+        Buy a tiny block. Add your chaos.
+      </h1>
+      <p class="hero-sub">
+        A ridiculous, colorful tribute to early internet experiments. There are
+        1000 tiny blocks on this wall. Buy one for <strong>$1</strong>, drop
+        your logo, meme, link, project or chaos, and become part of Internet
+        history 2025.
+      </p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" id="scrollToWall">
+          🚀 View the Wall
+        </button>
+        <button class="btn btn-ghost" id="howItWorks">
+          ❓ How does it work?
+        </button>
+      </div>
+      <div class="hero-bottom">
+        <span>⚡ Limited experiment. Once the 1000 blocks are gone, they are gone.</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SECTION -->
+  <main class="section" id="wallSection">
+    <div class="section-header">
+      <h2>Live Wall</h2>
+      <div class="counter">
+        Filled blocks: <span id="filledCount">0</span> / <span>1000</span>
+      </div>
+    </div>
+
+    <div class="grid-wrapper">
+      <div class="grid-inner">
+        <div id="pixelGrid" class="pixel-grid"></div>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-swatch free"></span>
+          Free block • $1
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch basic"></span>
+          Filled block
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch premium"></span>
+          Premium highlight (manual)
+        </div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>How it works</h3>
+        <ul class="info-list">
+          <li>Pick any free block on the wall. Each block has an ID (1–1000).</li>
+          <li>Pay for your block (starting at $1) and send your logo, image or meme.</li>
+          <li>We add your block to the wall + your link in the description.</li>
+          <li>The wall stays online for at least all of 2025 as a weird Internet monument.</li>
+        </ul>
+        <p class="footnote">
+          This is an art / chaos project. No promise of traffic, only vibes,
+          screenshots and internet history.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Pricing tiers (example)</h3>
+        <div class="price-row">
+          <span class="price-tier-name">Tiny block • basic chaos</span>
+          <span class="price-tier-value">$1</span>
+        </div>
+        <div class="price-row">
+          <span class="price-tier-name">Bigger block • logo + link</span>
+          <span class="price-tier-value">$5–$20</span>
+        </div>
+        <div class="price-row">
+          <span class="price-tier-name">Premium block • animation + top row</span>
+          <span class="price-tier-value">$50+</span>
+        </div>
+        <p class="footnote">
+          You can change these prices at any time. For now, we’ll start simple:
+          $1 for any normal block. Premium blocks can be handled manually.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="blockModal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h3 id="modalTitle">Block #123</h3>
+      <p id="modalStatus">This block is currently free.</p>
+      <p class="modal-tagline">
+        Claim it, drop your chaos, and join the wall.
+      </p>
+
+      <div class="modal-row">
+        <span class="modal-label">Block ID</span>
+        <span class="modal-value" id="modalBlockId">123</span>
+      </div>
+      <div class="modal-row">
+        <span class="modal-label">Status</span>
+        <span class="modal-value" id="modalBlockStatus">Free</span>
+      </div>
+      <div class="modal-row">
+        <span class="modal-label">Price</span>
+        <span class="modal-value" id="modalBlockPrice">$1</span>
+      </div>
+
+      <div class="modal-actions">
+        <a
+          id="modalBuyLink"
+          class="btn btn-primary"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💸 Claim this block
+        </a>
+        <button class="btn btn-ghost" id="modalEmailBtn">
+          📩 Or email us
+        </button>
+      </div>
+
+      <p class="modal-small">
+        After payment, send your block ID + image (logo, meme or whatever) +
+        link. We manually add it within 24–48 hours.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // BASIC CONFIG – ТУК СИ СЛАГАШ ТВОИТЕ ЛИНКОВЕ
+    const GUMROAD_BASE_URL =
+      "https://your-gumroad-profile.gumroad.com/l/viralwall"; // смени с твоя реален Gumroad линк
+    const CONTACT_EMAIL = "youremail@example.com"; // смени с твой имейл
+
+    // DEMO: пример кои block-ове са "заети" (по-късно сменяш с реални)
+    // Просто добавяй ID-та в този масив когато някой си купи блок
+    const filledBlocks = [
+      7, 13, 42, 69, 100, 222, 333, 404, 777, 999,
+    ];
+
+    const totalBlocks = 1000;
+    const gridElement = document.getElementById("pixelGrid");
+    const filledCountElement = document.getElementById("filledCount");
+
+    function randomColor() {
+      const palettes = [
+        ["#ff6fd8", "#ffcc70"],
+        ["#00f5a0", "#00d4ff"],
+        ["#ff9a9e", "#fecfef"],
+        ["#a18cd1", "#fbc2eb"],
+        ["#f6d365", "#fda085"],
+        ["#f093fb", "#f5576c"],
+        ["#5ee7df", "#b490ca"],
+        ["#c3ff99", "#f5f7b2"],
+      ];
+      const [c1, c2] = palettes[Math.floor(Math.random() * palettes.length)];
+      return `linear-gradient(135deg, ${c1}, ${c2})`;
+    }
+
+    function buildGrid() {
+      let filledCount = 0;
+      for (let i = 1; i <= totalBlocks; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("pixel-cell");
+        cell.dataset.id = String(i);
+        cell.style.background = randomColor();
+
+        if (filledBlocks.includes(i)) {
+          cell.classList.add("filled");
+          filledCount++;
+        }
+
+        cell.addEventListener("click", () => handleCellClick(i));
+        gridElement.appendChild(cell);
+      }
+      filledCountElement.textContent = filledCount.toString();
+    }
+
+    // MODAL LOGIC
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalStatusText = document.getElementById("modalStatus");
+    const modalBlockId = document.getElementById("modalBlockId");
+    const modalBlockStatus = document.getElementById("modalBlockStatus");
+    const modalBlockPrice = document.getElementById("modalBlockPrice");
+    const modalBuyLink = document.getElementById("modalBuyLink");
+    const modalEmailBtn = document.getElementById("modalEmailBtn");
+    const modalClose = document.getElementById("modalClose");
+
+    function handleCellClick(id) {
+      const isFilled = filledBlocks.includes(id);
+
+      modalTitle.textContent = `Block #${id}`;
+      modalBlockId.textContent = id;
+
+      if (isFilled) {
+        modalStatusText.textContent =
+          "This block is already claimed. Click around to find a free one!";
+        modalBlockStatus.textContent = "Taken";
+        modalBlockPrice.textContent = "—";
+        modalBuyLink.style.display = "none";
+      } else {
+        modalStatusText.textContent = "This block is currently free.";
+        modalBlockStatus.textContent = "Free";
+        modalBlockPrice.textContent = "$1";
+        modalBuyLink.style.display = "inline-flex";
+
+        // Примерен Gumroad линк с query параметър blockId
+        const url = `${GUMROAD_BASE_URL}?block=${id}`;
+        modalBuyLink.href = url;
+      }
+
+      modalEmailBtn.onclick = () => {
+        const subject = encodeURIComponent(`The Viral $1 Wall – Block #${id}`);
+        const body = encodeURIComponent(
+          `Hey,\n\nI want to claim Block #${id} on The Viral $1 Wall.\n\nMy link:\nMy idea/logo:\n\n–`
+        );
+        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      };
+
+      modalBackdrop.style.display = "flex";
+    }
+
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.style.display = "none";
+      }
+    });
+    modalClose.addEventListener("click", () => {
+      modalBackdrop.style.display = "none";
+    });
+
+    // SCROLL / HOW IT WORKS
+    document.getElementById("scrollToWall").addEventListener("click", () => {
+      document.getElementById("wallSection").scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+
+    document.getElementById("howItWorks").addEventListener("click", () => {
+      window.scrollTo({ top: document.body.scrollHeight / 2, behavior: "smooth" });
+    });
+
+    // INIT
+    buildGrid();
+  </script>
+</body>
+</html>
