@@ -586,122 +586,125 @@
   </div>
 
   <script>
-    // BASIC CONFIG – ТУК СИ СЛАГАШ ТВОИТЕ ЛИНКОВЕ
-    const GUMROAD_BASE_URL =
-  https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200;
-const CONTACT_EMAIL = vulkoshishkov87@gmail.com;
+  // BASIC CONFIG – ТУК СА ТВОИТЕ ИСТИНСКИ ЛИНКОВЕ
+  const GUMROAD_BASE_URL =
+    https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200; // реалният Gumroad линк
+  const CONTACT_EMAIL = "vulkoshishkov87@gmail.com"; // реалният ти имейл
 
-    // DEMO: пример кои block-ове са "заети" (по-късно сменяш с реални)
-    // Просто добавяй ID-та в този масив когато някой си купи блок
-    const filledBlocks = [
-      7, 13, 42, 69, 100, 222, 333, 404, 777, 999,
+  // Кои блокчета вече са заети (примерно – може да ги смениш по-късно)
+  const filledBlocks = [7, 13, 42, 69, 100, 222, 333, 404, 777, 999];
+
+  const totalBlocks = 1000; // реално рисуваме 1000 блока (стабилно и бързо)
+
+  const gridElement = document.getElementById("pixelGrid");
+  const filledCountElement = document.getElementById("filledCount");
+
+  function randomColor() {
+    const palettes = [
+      ["#ff6fd8", "#ffcc70"],
+      ["#00f5a0", "#00d4ff"],
+      ["#ff9a9e", "#fecfef"],
+      ["#a18cd1", "#fbc2eb"],
+      ["#f6d365", "#fda085"],
+      ["#f093fb", "#f5576c"],
+      ["#5ee7df", "#b490ca"],
+      ["#c3ff99", "#f5f7b2"],
     ];
+    const [c1, c2] = palettes[Math.floor(Math.random() * palettes.length)];
+    return `linear-gradient(135deg, ${c1}, ${c2})`;
+  }
 
-    const totalBlocks = 1000;
-    const gridElement = document.getElementById("pixelGrid");
-    const filledCountElement = document.getElementById("filledCount");
+  function buildGrid() {
+    let filledCount = 0;
 
-    function randomColor() {
-      const palettes = [
-        ["#ff6fd8", "#ffcc70"],
-        ["#00f5a0", "#00d4ff"],
-        ["#ff9a9e", "#fecfef"],
-        ["#a18cd1", "#fbc2eb"],
-        ["#f6d365", "#fda085"],
-        ["#f093fb", "#f5576c"],
-        ["#5ee7df", "#b490ca"],
-        ["#c3ff99", "#f5f7b2"],
-      ];
-      const [c1, c2] = palettes[Math.floor(Math.random() * palettes.length)];
-      return `linear-gradient(135deg, ${c1}, ${c2})`;
-    }
+    for (let i = 1; i <= totalBlocks; i++) {
+      const cell = document.createElement("div");
+      cell.classList.add("pixel-cell");
+      cell.dataset.id = String(i);
+      cell.style.background = randomColor();
 
-    function buildGrid() {
-      let filledCount = 0;
-      for (let i = 1; i <= totalBlocks; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add("pixel-cell");
-        cell.dataset.id = String(i);
-        cell.style.background = randomColor();
-
-        if (filledBlocks.includes(i)) {
-          cell.classList.add("filled");
-          filledCount++;
-        }
-
-        cell.addEventListener("click", () => handleCellClick(i));
-        gridElement.appendChild(cell);
-      }
-      filledCountElement.textContent = filledCount.toString();
-    }
-
-    // MODAL LOGIC
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalStatusText = document.getElementById("modalStatus");
-    const modalBlockId = document.getElementById("modalBlockId");
-    const modalBlockStatus = document.getElementById("modalBlockStatus");
-    const modalBlockPrice = document.getElementById("modalBlockPrice");
-    const modalBuyLink = document.getElementById("modalBuyLink");
-    const modalEmailBtn = document.getElementById("modalEmailBtn");
-    const modalClose = document.getElementById("modalClose");
-
-    function handleCellClick(id) {
-      const isFilled = filledBlocks.includes(id);
-
-      modalTitle.textContent = `Block #${id}`;
-      modalBlockId.textContent = id;
-
-      if (isFilled) {
-        modalStatusText.textContent =
-          "This block is already claimed. Click around to find a free one!";
-        modalBlockStatus.textContent = "Taken";
-        modalBlockPrice.textContent = "—";
-        modalBuyLink.style.display = "none";
-      } else {
-        modalStatusText.textContent = "This block is currently free.";
-        modalBlockStatus.textContent = "Free";
-        modalBlockPrice.textContent = "$1";
-        modalBuyLink.style.display = "inline-flex";
-
-        // Примерен Gumroad линк с query параметър blockId
-        const url = `${GUMROAD_BASE_URL}?block=${id}`;
-        modalBuyLink.href = url;
+      if (filledBlocks.includes(i)) {
+        cell.classList.add("filled");
+        filledCount++;
       }
 
-      modalEmailBtn.onclick = () => {
-        const subject = encodeURIComponent(`The Viral $1 Wall – Block #${id}`);
-        const body = encodeURIComponent(
-          `Hey,\n\nI want to claim Block #${id} on The Viral $1 Wall.\n\nMy link:\nMy idea/logo:\n\n–`
-        );
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-      };
-
-      modalBackdrop.style.display = "flex";
+      cell.addEventListener("click", () => handleCellClick(i));
+      gridElement.appendChild(cell);
     }
 
-    modalBackdrop.addEventListener("click", (e) => {
-      if (e.target === modalBackdrop) {
-        modalBackdrop.style.display = "none";
-      }
-    });
-    modalClose.addEventListener("click", () => {
+    filledCountElement.textContent = filledCount.toString();
+  }
+
+  // MODAL LOGIC
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalStatusText = document.getElementById("modalStatus");
+  const modalBlockId = document.getElementById("modalBlockId");
+  const modalBlockStatus = document.getElementById("modalBlockStatus");
+  const modalBlockPrice = document.getElementById("modalBlockPrice");
+  const modalBuyLink = document.getElementById("modalBuyLink");
+  const modalEmailBtn = document.getElementById("modalEmailBtn");
+  const modalClose = document.getElementById("modalClose");
+
+  function handleCellClick(id) {
+    const isFilled = filledBlocks.includes(id);
+
+    modalTitle.textContent = `Block #${id}`;
+    modalBlockId.textContent = id;
+
+    if (isFilled) {
+      modalStatusText.textContent =
+        "This block is already claimed. Click around to find a free one!";
+      modalBlockStatus.textContent = "Taken";
+      modalBlockPrice.textContent = "—";
+      modalBuyLink.style.display = "none";
+    } else {
+      modalStatusText.textContent = "This block is currently free.";
+      modalBlockStatus.textContent = "Free";
+      modalBlockPrice.textContent = "$1";
+      modalBuyLink.style.display = "inline-flex";
+
+      // Линк към Gumroad с block ID като параметър
+      const url = `${GUMROAD_BASE_URL}?block=${id}`;
+      modalBuyLink.href = url;
+    }
+
+    modalEmailBtn.onclick = () => {
+      const subject = encodeURIComponent(`The Viral $1 Wall – Block #${id}`);
+      const body = encodeURIComponent(
+        `Hey,\n\nI want to claim Block #${id} on The Viral $1 Wall.\n\nMy link:\nMy idea/logo:\n\n–`
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    };
+
+    modalBackdrop.style.display = "flex";
+  }
+
+  modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) {
       modalBackdrop.style.display = "none";
-    });
+    }
+  });
+  modalClose.addEventListener("click", () => {
+    modalBackdrop.style.display = "none";
+  });
 
-    // SCROLL / HOW IT WORKS
-    document.getElementById("scrollToWall").addEventListener("click", () => {
-      document.getElementById("wallSection").scrollIntoView({
-        behavior: "smooth",
-      });
+  // SCROLL / HOW IT WORKS
+  document.getElementById("scrollToWall").addEventListener("click", () => {
+    document.getElementById("wallSection").scrollIntoView({
+      behavior: "smooth",
     });
+  });
 
-    document.getElementById("howItWorks").addEventListener("click", () => {
-      window.scrollTo({ top: document.body.scrollHeight / 2, behavior: "smooth" });
+  document.getElementById("howItWorks").addEventListener("click", () => {
+    window.scrollTo({
+      top: document.body.scrollHeight / 2,
+      behavior: "smooth",
     });
+  });
 
-    // INIT
-    buildGrid();
-  </script>
+  // Когато страницата зареди – рисуваме блокчетата
+  document.addEventListener("DOMContentLoaded", buildGrid);
+</script>
 </body>
 </html>
