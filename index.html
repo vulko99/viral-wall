@@ -714,7 +714,6 @@
       modalBackdrop.style.display = "none";
     });
 
-    // SCROLL / HOW IT WORKS
     document.getElementById("scrollToWall").addEventListener("click", () => {
       document.getElementById("wallSection").scrollIntoView({
         behavior: "smooth",
@@ -727,6 +726,28 @@
         behavior: "smooth",
       });
     });
+
+    // New: Buy Block button в навигацията – скрол до стената
+    const buyBlockBtn = document.getElementById("buyBlockBtn");
+    if (buyBlockBtn) {
+      buyBlockBtn.addEventListener("click", () => {
+        document.getElementById("wallSection").scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+    }
+
+    // New: Contact button – отваря мейл към CONTACT_EMAIL
+    const contactBtn = document.getElementById("contactBtn");
+    if (contactBtn) {
+      contactBtn.addEventListener("click", () => {
+        const subject = encodeURIComponent("The Viral $1 Wall – Question");
+        const body = encodeURIComponent(
+          "Hey,\n\nI have a question about The Viral $1 Wall.\n\n–"
+        );
+        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      });
+    }
 
     // Рисуваме мрежата след зареждане на DOM
     document.addEventListener("DOMContentLoaded", buildGrid);
