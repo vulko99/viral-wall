@@ -357,7 +357,7 @@
       color: #ffeb3b;
     }
 
-    /* GRID */
+    /* GRID / MILLION WALL */
 
     .grid-wrapper {
       background: radial-gradient(circle at top left, #ff6fd8 0, #111 40%),
@@ -371,65 +371,26 @@
     .grid-inner {
       background: rgba(5, 5, 10, 0.9);
       border-radius: 18px;
-      padding: 0.6rem;
+      padding: 0.25rem;
       overflow: hidden;
       max-height: 70vh;
     }
 
-    .pixel-grid {
-      display: grid;
-      grid-template-columns: repeat(40, minmax(0, 1fr));
-      grid-auto-rows: 14px;
-      gap: 1px;
-      overflow: auto;
-      border-radius: 14px;
-    }
-
-    .pixel-cell {
-      cursor: pointer;
-      border-radius: 2px;
-      transition: transform 0.08s ease, box-shadow 0.08s ease,
-        filter 0.08s ease;
+    .million-wall {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .pixel-cell::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 1px solid rgba(0, 0, 0, 0.25);
-      mix-blend-mode: multiply;
-    }
-
-    .pixel-cell:hover {
-      transform: scale(1.4);
-      z-index: 10;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-      filter: brightness(1.15);
-    }
-
-    .pixel-cell.filled {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    }
-
-    .pixel-cell.filled::before {
-      content: "";
-      position: absolute;
-      inset: 20%;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      opacity: 0.9;
-    }
-
-    .pixel-cell.has-image {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .pixel-cell.has-image::before {
-      display: none;
+    #pixelCanvas {
+      width: min(900px, 100%);
+      height: min(900px, 100vw);
+      image-rendering: pixelated;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+      cursor: crosshair;
+      background: #111;
     }
 
     .legend {
@@ -466,6 +427,96 @@
 
     .legend-swatch.premium {
       background: linear-gradient(135deg, #c471f5, #fa71cd);
+    }
+
+    /* Tooltip */
+
+    .pixel-tooltip {
+      position: absolute;
+      pointer-events: none;
+      transform: translate(-50%, -120%);
+      z-index: 5;
+    }
+
+    .pixel-tooltip-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(5, 5, 15, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      max-width: 260px;
+    }
+
+    .pixel-tooltip-preview {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: radial-gradient(circle at top left, #ff6fd8, #00d4ff);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+
+    .pixel-tooltip-text {
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .pixel-tooltip-title {
+      font-weight: 600;
+      margin-bottom: 0.12rem;
+    }
+
+    .pixel-tooltip-status {
+      opacity: 0.75;
+    }
+
+    /* Archive mode toggle */
+
+    .archive-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    .archive-toggle span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00ff8a;
+      box-shadow: 0 0 8px #00ff8a;
+    }
+
+    body.archive-mode #pixelCanvas {
+      cursor: default;
+    }
+
+    body.archive-mode .archive-toggle span.dot {
+      background: #ff3b6b;
+      box-shadow: 0 0 8px #ff3b6b;
+    }
+
+    body.archive-mode .archive-toggle-label::after {
+      content: "ARCHIVE ON";
+    }
+
+    .archive-toggle-label::after {
+      content: "ARCHIVE OFF";
     }
 
     /* INFO / PRICING / FAQ */
@@ -679,7 +730,7 @@
           <span>The Viral $1 Wall</span>
           <span>Internet chaos 2025</span>
         </div>
-        <div class="nav-chip">1000 blocks • $1 each</div>
+        <div class="nav-chip">1,000,000 pixels • $1 each</div>
       </div>
       <div class="top-nav-actions">
         <a
@@ -713,8 +764,8 @@
       </h1>
       <p class="hero-sub">
         A ridiculous, colorful tribute to early internet experiments. There are
-        1000 tiny blocks on this wall. Buy one for <strong>$1</strong>, drop
-        your logo, meme, link, project or chaos, and become part of Internet
+        1,000,000 tiny pixels on this wall. Buy one for <strong>$1</strong>,
+        drop your logo, meme, link, project or chaos, and become part of Internet
         history 2025.
       </p>
       <div class="hero-cta">
@@ -726,7 +777,7 @@
         </button>
       </div>
       <div class="hero-bottom">
-        <span>⚡ Limited experiment. Once the 1000 blocks are gone, they are gone.</span>
+        <span>⚡ Limited experiment. Once the pixels are gone, they are gone.</span>
       </div>
     </div>
   </header>
@@ -736,22 +787,39 @@
     <div class="section-header">
       <h2>Live Wall</h2>
       <div class="counter">
-        Filled blocks: <span id="filledCount">0</span> / <span>1000</span>
+        Filled pixels: <span id="filledCount">0</span> / <span>1,000,000</span>
+        &nbsp;&nbsp;
+        <button class="archive-toggle" id="archiveToggle">
+          <span class="dot"></span>
+          <span class="archive-toggle-label"></span>
+        </button>
       </div>
     </div>
 
     <div class="grid-wrapper">
-      <div class="grid-inner">
-        <div id="pixelGrid" class="pixel-grid"></div>
+      <div class="grid-inner million-wall">
+        <canvas id="pixelCanvas"></canvas>
+
+        <!-- Tooltip / preview on hover -->
+        <div id="pixelTooltip" class="pixel-tooltip" hidden>
+          <div class="pixel-tooltip-inner">
+            <div class="pixel-tooltip-preview" id="pixelPreview"></div>
+            <div class="pixel-tooltip-text">
+              <div class="pixel-tooltip-title" id="pixelTooltipTitle"></div>
+              <div class="pixel-tooltip-status" id="pixelTooltipStatus"></div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="legend">
         <div class="legend-item">
           <span class="legend-swatch free"></span>
-          Free block • $1
+          Free pixel • $1
         </div>
         <div class="legend-item">
           <span class="legend-swatch basic"></span>
-          Filled block
+          Claimed pixel
         </div>
         <div class="legend-item">
           <span class="legend-swatch premium"></span>
@@ -764,10 +832,11 @@
       <div class="info-card">
         <h3>How it works</h3>
         <ul class="info-list">
-          <li>Pick any free block on the wall. Each block has an ID (1–1000).</li>
+          <li>Hover over the wall to explore pixel IDs.</li>
+          <li>Click any free pixel (you'll see its ID in the popup).</li>
           <li>Pay $1 via Stripe (card, Apple Pay, Google Pay).</li>
           <li>
-            After payment you’re redirected to a short form to send your block ID,
+            After payment you’re redirected to a short form to send your pixel ID,
             logo/image and URL.
           </li>
           <li>The wall stays online for at least all of 2025 as a weird Internet monument.</li>
@@ -781,20 +850,19 @@
       <div class="info-card">
         <h3>Pricing tiers (example)</h3>
         <div class="price-row">
-          <span class="price-tier-name">Tiny block • basic chaos</span>
+          <span class="price-tier-name">Single pixel • basic chaos</span>
           <span class="price-tier-value">$1</span>
         </div>
         <div class="price-row">
-          <span class="price-tier-name">Bigger block • logo + link</span>
-          <span class="price-tier-value">$5–$20</span>
+          <span class="price-tier-name">Pixel clusters • mini logo area</span>
+          <span class="price-tier-value">$5–$50</span>
         </div>
         <div class="price-row">
-          <span class="price-tier-name">Premium block • animation + top row</span>
-          <span class="price-tier-value">$50+</span>
+          <span class="price-tier-name">Premium area • big logo / animation</span>
+          <span class="price-tier-value">$100+</span>
         </div>
         <p class="footnote">
-          You can change these prices at any time. For now, we’ll start simple:
-          $1 for any normal block. Premium blocks can be handled manually.
+          For launch we keep it simple: $1 per normal pixel. Premium clusters can be handled manually via email.
         </p>
       </div>
     </div>
@@ -810,31 +878,31 @@
       <div class="info-card">
         <h3>What exactly am I buying?</h3>
         <p>
-          You’re buying the right to place a tiny visual block (with your logo,
-          meme, project or message) on The Viral $1 Wall for the duration of the
-          experiment (at least all of 2025).
+          You’re buying the right to place a tiny visual pixel (or cluster of pixels)
+          with your logo, meme, project or message on The Viral $1 Wall for the
+          duration of the experiment (at least all of 2025).
         </p>
 
         <h3 style="margin-top:1rem;">How does the process work?</h3>
         <ul class="info-list">
-          <li>You click on any free block and note its ID (for example #531).</li>
+          <li>You hover, pick a free pixel and note its ID.</li>
           <li>You pay $1 via Stripe.</li>
-          <li>After payment you’re redirected to a short form to send your block ID, logo/image and URL.</li>
-          <li>We manually add your block to the wall within 24–48 hours.</li>
+          <li>After payment you’re redirected to a short form to send your pixel ID, logo/image and URL.</li>
+          <li>We manually add your pixel (or pixels) to the wall within 24–48 hours.</li>
         </ul>
       </div>
 
       <div class="info-card">
         <h3>More questions</h3>
         <ul class="info-list">
-          <li><strong>How long will my block stay online?</strong>  
+          <li><strong>How long will my pixel stay online?</strong>  
             At least all of 2025. If the project goes viral, we’ll keep it up longer as an archive.
           </li>
-          <li><strong>Can I buy more than one block?</strong>  
-            Yes. You can claim multiple blocks – just use different IDs and submit them in the form.
+          <li><strong>Can I buy more than one pixel?</strong>  
+            Yes. You can claim multiple pixels or clusters – just submit all IDs in the form.
           </li>
           <li><strong>Can I change my image or link later?</strong>  
-            Once per block for free – just email us from the same address you used in the form.
+            Once per pixel cluster for free – just email us from the same address you used in the form.
           </li>
           <li><strong>What kind of content is not allowed?</strong>  
             No hate, illegal stuff, explicit adult content or scams. We reserve the right to reject/refund anything that breaks this.
@@ -879,15 +947,15 @@
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal" id="blockModal">
       <button class="modal-close" id="modalClose">&times;</button>
-      <h3 id="modalTitle">Block #123</h3>
-      <p id="modalStatus">This block is currently free.</p>
+      <h3 id="modalTitle">Pixel #123</h3>
+      <p id="modalStatus">This pixel is currently free.</p>
       <p class="modal-tagline">
         Remember this number. After payment you’ll be redirected to a short form
         where you’ll send us your logo/image and link.
       </p>
 
       <div class="modal-row">
-        <span class="modal-label">Block ID</span>
+        <span class="modal-label">Pixel ID</span>
         <span class="modal-value" id="modalBlockId">123</span>
       </div>
       <div class="modal-row">
@@ -907,7 +975,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          💳 Claim this block (Stripe)
+          💳 Claim this pixel (Stripe)
         </a>
         <button class="btn btn-ghost" id="modalEmailBtn">
           📩 Or email us
@@ -915,8 +983,8 @@
       </div>
 
       <p class="modal-small">
-        Flow: 1) Click “Claim this block (Stripe)”. 2) Pay $1. 3) You’ll land on a
-        form – enter this block ID, your logo/image and your URL there.
+        Flow: 1) Click “Claim this pixel (Stripe)”. 2) Pay $1. 3) You’ll land on a
+        form – enter this pixel ID, your logo/image and your URL there.
         We manually add it to the wall within 24–48 hours.
       </p>
     </div>
@@ -925,73 +993,39 @@
   <script>
     // BASIC CONFIG
     const STRIPE_CHECKOUT_URL =
-      "https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200"; // твоя Stripe Payment Link
+      "https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200";
     const CONTACT_EMAIL = "vulkoshishkov87@gmail.com";
 
-    // Кои блокчета са вече заети (можеш да добавяш)
-    const filledBlocks = [7, 13, 42, 69, 100, 222, 333, 404, 777, 999];
+    // Pixel grid config: 1000 x 1000 = 1,000,000
+    const PIXELS_PER_SIDE = 1000;
+    const TOTAL_PIXELS = PIXELS_PER_SIDE * PIXELS_PER_SIDE;
 
-    // Данни за блокове с реални лога и линкове (пример – оставям празно)
-    const blockData = {
-      // 531: {
-      //   image: "https://.../logo.png",
-      //   url: "https://example.com"
-      // }
+    // Claimed pixels (id от 1 до 1,000,000)
+    // Засега примерни – после ти добавяш реалните
+    const claimedPixels = new Set([
+      // пример: 123456, 789000
+    ]);
+
+    // Данни за пикселите с логота/линкове
+    const pixelData = {
+      // пример:
+      // 123456: {
+      //   title: "Example Project",
+      //   url: "https://example.com",
+      //   image:
+      //     "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      // },
     };
 
-    const totalBlocks = 1000;
-
-    const gridElement = document.getElementById("pixelGrid");
+    // DOM елементи
+    const pixelCanvas = document.getElementById("pixelCanvas");
+    const tooltip = document.getElementById("pixelTooltip");
+    const tooltipTitle = document.getElementById("pixelTooltipTitle");
+    const tooltipStatus = document.getElementById("pixelTooltipStatus");
+    const pixelPreview = document.getElementById("pixelPreview");
     const filledCountElement = document.getElementById("filledCount");
+    const archiveToggle = document.getElementById("archiveToggle");
 
-    function randomColor() {
-      const palettes = [
-        ["#ff6fd8", "#ffcc70"],
-        ["#00f5a0", "#00d4ff"],
-        ["#ff9a9e", "#fecfef"],
-        ["#a18cd1", "#fbc2eb"],
-        ["#f6d365", "#fda085"],
-        ["#f093fb", "#f5576c"],
-        ["#5ee7df", "#b490ca"],
-        ["#c3ff99", "#f5f7b2"],
-      ];
-      const [c1, c2] = palettes[Math.floor(Math.random() * palettes.length)];
-      return `linear-gradient(135deg, ${c1}, ${c2})`;
-    }
-
-    function buildGrid() {
-      let filledCount = 0;
-
-      for (let i = 1; i <= totalBlocks; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add("pixel-cell");
-        cell.dataset.id = String(i);
-        cell.style.background = randomColor();
-
-        const data = blockData[i];
-        const isFilled = filledBlocks.includes(i) || !!data;
-
-        if (isFilled) {
-          cell.classList.add("filled");
-          filledCount++;
-        }
-
-        if (data && data.image) {
-          cell.classList.add("has-image");
-          cell.style.backgroundImage = `url('${data.image}')`;
-          cell.style.backgroundSize = "cover";
-          cell.style.backgroundPosition = "center";
-          cell.style.backgroundRepeat = "no-repeat";
-        }
-
-        cell.addEventListener("click", () => handleCellClick(i));
-        gridElement.appendChild(cell);
-      }
-
-      filledCountElement.textContent = filledCount.toString();
-    }
-
-    // MODAL LOGIC
     const modalBackdrop = document.getElementById("modalBackdrop");
     const modalTitle = document.getElementById("modalTitle");
     const modalStatusText = document.getElementById("modalStatus");
@@ -1002,49 +1036,190 @@
     const modalEmailBtn = document.getElementById("modalEmailBtn");
     const modalClose = document.getElementById("modalClose");
 
-    function handleCellClick(id) {
-      const data = blockData[id];
-      const isFilled = filledBlocks.includes(id) || !!data;
+    let archiveMode = false;
+    let hoverPixelId = null;
 
-      modalTitle.textContent = `Block #${id}`;
-      modalBlockId.textContent = id;
+    // Инициализация на canvas
+    function initCanvas() {
+      const ctx = pixelCanvas.getContext("2d");
 
-      if (isFilled) {
+      pixelCanvas.width = PIXELS_PER_SIDE;
+      pixelCanvas.height = PIXELS_PER_SIDE;
+
+      const imgData = ctx.createImageData(PIXELS_PER_SIDE, PIXELS_PER_SIDE);
+      const data = imgData.data;
+
+      // Рисуваме милион пиксела с „интернет шум“
+      for (let i = 0; i < TOTAL_PIXELS; i++) {
+        const base = i * 4;
+        const palette = pickPalette();
+        data[base] = palette[0]; // R
+        data[base + 1] = palette[1]; // G
+        data[base + 2] = palette[2]; // B
+        data[base + 3] = 255; // A
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+
+      // Подсветка за claimed pixels (малко по-ярки)
+      claimedPixels.forEach((id) => {
+        const { x, y } = idToCoords(id);
+        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.fillRect(x, y, 1, 1);
+      });
+
+      filledCountElement.textContent = claimedPixels.size.toString();
+    }
+
+    function pickPalette() {
+      // пастелни цветове
+      const palettes = [
+        [255, 111, 216],
+        [255, 204, 112],
+        [0, 245, 160],
+        [0, 212, 255],
+        [240, 147, 251],
+        [246, 211, 101],
+        [130, 177, 255],
+        [185, 251, 192],
+      ];
+      return palettes[Math.floor(Math.random() * palettes.length)];
+    }
+
+    function idToCoords(id) {
+      const index = id - 1;
+      const y = Math.floor(index / PIXELS_PER_SIDE);
+      const x = index % PIXELS_PER_SIDE;
+      return { x, y };
+    }
+
+    function coordsToId(x, y) {
+      if (
+        x < 0 ||
+        x >= PIXELS_PER_SIDE ||
+        y < 0 ||
+        y >= PIXELS_PER_SIDE
+      ) {
+        return null;
+      }
+      return y * PIXELS_PER_SIDE + x + 1;
+    }
+
+    function updateTooltipPosition(event) {
+      const rect = pixelCanvas.getBoundingClientRect();
+      tooltip.style.left = `${event.clientX - rect.left}px`;
+      tooltip.style.top = `${event.clientY - rect.top}px`;
+    }
+
+    function handleMouseMove(event) {
+      if (archiveMode) {
+        hideTooltip();
+        return;
+      }
+
+      const rect = pixelCanvas.getBoundingClientRect();
+      const scaleX = PIXELS_PER_SIDE / rect.width;
+      const scaleY = PIXELS_PER_SIDE / rect.height;
+      const x = Math.floor((event.clientX - rect.left) * scaleX);
+      const y = Math.floor((event.clientY - rect.top) * scaleY);
+      const id = coordsToId(x, y);
+
+      if (!id) {
+        hideTooltip();
+        return;
+      }
+
+      hoverPixelId = id;
+
+      const data = pixelData[id];
+      const isClaimed = claimedPixels.has(id) || !!data;
+
+      tooltip.hidden = false;
+      updateTooltipPosition(event);
+
+      tooltipTitle.textContent = `Pixel #${id.toLocaleString()}`;
+
+      if (data && data.title) {
+        tooltipTitle.textContent = `${data.title} • #${id.toLocaleString()}`;
+      }
+
+      if (isClaimed) {
+        tooltipStatus.textContent = data && data.url
+          ? "Claimed – click to open details"
+          : "Claimed pixel";
+      } else {
+        tooltipStatus.textContent = "Free • $1";
+      }
+
+      if (data && data.image) {
+        pixelPreview.style.backgroundImage = `url(${data.image})`;
+      } else {
+        pixelPreview.style.backgroundImage =
+          "radial-gradient(circle at top left, #ff6fd8, #00d4ff)";
+      }
+    }
+
+    function hideTooltip() {
+      tooltip.hidden = true;
+      hoverPixelId = null;
+    }
+
+    function handleClick() {
+      if (archiveMode || !hoverPixelId) return;
+      openModalForPixel(hoverPixelId);
+    }
+
+    function openModalForPixel(id) {
+      const data = pixelData[id];
+      const isClaimed = claimedPixels.has(id) || !!data;
+
+      modalTitle.textContent = `Pixel #${id.toLocaleString()}`;
+      modalBlockId.textContent = id.toLocaleString();
+
+      if (isClaimed) {
         if (data && data.url) {
           modalStatusText.textContent =
-            "This block is already claimed. You can visit their link below.";
+            "This pixel is already claimed. You can visit their link below.";
           modalBlockStatus.textContent = "Taken";
           modalBlockPrice.textContent = "—";
           modalBuyLink.style.display = "inline-flex";
-          modalBuyLink.textContent = "🔗 Visit this block";
+          modalBuyLink.textContent = "🔗 Visit this pixel";
           modalBuyLink.href = data.url;
         } else {
           modalStatusText.textContent =
-            "This block is already claimed. Click around to find a free one!";
+            "This pixel is already claimed. Click around to find a free one!";
           modalBlockStatus.textContent = "Taken";
           modalBlockPrice.textContent = "—";
           modalBuyLink.style.display = "none";
         }
       } else {
         modalStatusText.textContent =
-          "This block is currently free. After payment you'll be redirected to a form where you send your logo and link.";
+          "This pixel is currently free. After payment you'll be redirected to a form where you send your pixel ID, logo/image and link.";
         modalBlockStatus.textContent = "Free";
         modalBlockPrice.textContent = "$1";
         modalBuyLink.style.display = "inline-flex";
-        modalBuyLink.textContent = "💳 Claim this block (Stripe)";
+        modalBuyLink.textContent = "💳 Claim this pixel (Stripe)";
         modalBuyLink.href = STRIPE_CHECKOUT_URL;
       }
 
       modalEmailBtn.onclick = () => {
-        const subject = encodeURIComponent(`The Viral $1 Wall – Block #${id}`);
+        const subject = encodeURIComponent(
+          `The Viral $1 Wall – Pixel #${id.toLocaleString()}`
+        );
         const body = encodeURIComponent(
-          `Hey,\n\nI want to claim Block #${id} on The Viral $1 Wall.\n\nMy link:\nMy image/logo:\n\n–`
+          `Hey,\n\nI want to claim Pixel #${id.toLocaleString()} on The Viral $1 Wall.\n\nMy link:\nMy image/logo:\n\n–`
         );
         window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
       };
 
       modalBackdrop.style.display = "flex";
     }
+
+    // Archive Mode toggle
+    archiveToggle.addEventListener("click", () => {
+      archiveMode = !archiveMode;
+      document.body.classList.toggle("archive-mode", archiveMode);
+    });
 
     modalBackdrop.addEventListener("click", (e) => {
       if (e.target === modalBackdrop) {
@@ -1056,7 +1231,7 @@
       modalBackdrop.style.display = "none";
     });
 
-    // SCROLL / NAV BUTTONS
+    // Hero / nav buttons
     document.getElementById("scrollToWall").addEventListener("click", () => {
       document.getElementById("wallSection").scrollIntoView({
         behavior: "smooth",
@@ -1089,7 +1264,12 @@
       });
     }
 
-    document.addEventListener("DOMContentLoaded", buildGrid);
+    // Canvas събития
+    pixelCanvas.addEventListener("mousemove", handleMouseMove);
+    pixelCanvas.addEventListener("mouseleave", hideTooltip);
+    pixelCanvas.addEventListener("click", handleClick);
+
+    document.addEventListener("DOMContentLoaded", initCanvas);
   </script>
 </body>
 </html>
