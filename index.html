@@ -1039,37 +1039,48 @@
     let archiveMode = false;
     let hoverPixelId = null;
 
-    // Инициализация на canvas
-    function initCanvas() {
-      const ctx = pixelCanvas.getContext("2d");
+   function initCanvas() {
+  const ctx = pixelCanvas.getContext("2d");
 
-      pixelCanvas.width = PIXELS_PER_SIDE;
-      pixelCanvas.height = PIXELS_PER_SIDE;
+  // Размер на платното в "реални" пиксели
+  pixelCanvas.width = PIXELS_PER_SIDE;
+  pixelCanvas.height = PIXELS_PER_SIDE;
 
-      const imgData = ctx.createImageData(PIXELS_PER_SIDE, PIXELS_PER_SIDE);
-      const data = imgData.data;
+  // 1) Равномерен фон – всички пиксели са "празни"
+  ctx.fillStyle = "#151515";      // можеш да смениш с по-светло, ако искаш
+  ctx.fillRect(0, 0, PIXELS_PER_SIDE, PIXELS_PER_SIDE);
 
-      // Рисуваме милион пиксела с „интернет шум“
-      for (let i = 0; i < TOTAL_PIXELS; i++) {
-        const base = i * 4;
-        const palette = pickPalette();
-        data[base] = palette[0]; // R
-        data[base + 1] = palette[1]; // G
-        data[base + 2] = palette[2]; // B
-        data[base + 3] = 255; // A
-      }
+  // 2) По желание: много лека решетка, за да се усеща мозайка (можеш да махнеш ако не ти хареса)
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+  ctx.lineWidth = 1;
 
-      ctx.putImageData(imgData, 0, 0);
+  // рисуваме вертикални линии през 10 пиксела
+  for (let x = 0; x < PIXELS_PER_SIDE; x += 10) {
+    ctx.beginPath();
+    ctx.moveTo(x + 0.5, 0);
+    ctx.lineTo(x + 0.5, PIXELS_PER_SIDE);
+    ctx.stroke();
+  }
 
-      // Подсветка за claimed pixels (малко по-ярки)
-      claimedPixels.forEach((id) => {
-        const { x, y } = idToCoords(id);
-        ctx.fillStyle = "rgba(255,255,255,0.5)";
-        ctx.fillRect(x, y, 1, 1);
-      });
+  // хоризонтални линии през 10 пиксела
+  for (let y = 0; y < PIXELS_PER_SIDE; y += 10) {
+    ctx.beginPath();
+    ctx.moveTo(0, y + 0.5);
+    ctx.lineTo(PIXELS_PER_SIDE, y + 0.5);
+    ctx.stroke();
+  }
 
-      filledCountElement.textContent = claimedPixels.size.toString();
-    }
+  // 3) Подсветка за вече заетите пиксели (ако има)
+  claimedPixels.forEach((id) => {
+    const { x, y } = idToCoords(id);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+    ctx.fillRect(x, y, 1, 1);
+  });
+
+  // 4) Обновяваме броя
+  filledCountElement.textContent = claimedPixels.size.toString();
+}
+
 
     function pickPalette() {
       // пастелни цветове
