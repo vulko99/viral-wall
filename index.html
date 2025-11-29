@@ -4,724 +4,128 @@
   <meta charset="UTF-8" />
   <title>The Viral $1 Wall – Internet Chaos 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="The Viral $1 Wall – buy a tiny spot on the most chaotic $1 wall on the internet. Add your logo, meme, project or link and become part of Internet history 2025."
-  />
+  <meta name="description" content="The Viral $1 Wall – buy a tiny spot on the most chaotic $1 wall on the internet. Add your logo, meme, project or link and become part of Internet history 2025." />
   <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #ff6fd8, #ffcc70, #00f5a0, #00d4ff);
-      --dark: #05050a;
-      --panel: rgba(10, 10, 20, 0.92);
-      --panel-soft: rgba(15, 15, 30, 0.9);
-      --border-subtle: rgba(255, 255, 255, 0.12);
-      --text-soft: rgba(245, 245, 245, 0.82);
+    :root{
+      --bg-gradient:linear-gradient(135deg,#ff6fd8,#ffcc70,#00f5a0,#00d4ff);
+      --panel:rgba(10,10,20,.92);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#161623,#050508 55%,#000 100%);
+      color:#f5f5f5;min-height:100vh;-webkit-font-smoothing:antialiased
     }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #161623, #050508 55%, #000 100%);
-      color: #f5f5f5;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit;border:none;background:none;cursor:pointer}
+    /* NAV */
+    .top-nav{position:fixed;top:.8rem;left:0;right:0;z-index:40;pointer-events:none}
+    .top-nav-inner{
+      max-width:1200px;margin:0 auto;padding:.45rem 1.2rem;border-radius:999px;
+      background:radial-gradient(circle at top left,rgba(255,255,255,.06),rgba(0,0,0,.9)),
+                 linear-gradient(120deg,rgba(255,255,255,.12),rgba(0,0,0,.9));
+      box-shadow:0 18px 45px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;pointer-events:auto
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      border: none;
-      background: none;
-    }
-
-    /* TOP NAV */
-
-    .top-nav {
-      position: fixed;
-      top: 0.8rem;
-      left: 0;
-      right: 0;
-      z-index: 40;
-      pointer-events: none;
-    }
-
-    .top-nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0.45rem 1.2rem;
-      border-radius: 999px;
-      background: radial-gradient(
-          circle at top left,
-          rgba(255, 255, 255, 0.06),
-          rgba(0, 0, 0, 0.9)
-        ),
-        linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.9));
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      pointer-events: auto;
-    }
-
-    .top-nav-left {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .nav-logo-mark {
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-      background: var(--bg-gradient);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-logo-mark::after {
-      content: "";
-      position: absolute;
-      inset: 35% 5% 5% 35%;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.4);
-      opacity: 0.8;
-    }
-
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    .nav-logo-text span:first-child {
-      font-weight: 700;
-    }
-
-    .nav-logo-text span:last-child {
-      font-size: 0.68rem;
-      opacity: 0.7;
-    }
-
-    .top-nav-actions {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-chip {
-      font-size: 0.65rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(0, 0, 0, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      opacity: 0.85;
-    }
-
-    .nav-btn {
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      cursor: pointer;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: transform 0.13s ease, box-shadow 0.13s ease,
-        background 0.13s ease, color 0.13s ease, border-color 0.13s ease;
-      white-space: nowrap;
-    }
-
-    .nav-btn-primary {
-      background: var(--bg-gradient);
-      color: #101010;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
-    }
-
-    .nav-btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
-    }
-
-    .nav-btn-ghost {
-      background: rgba(10, 10, 20, 0.8);
-      color: #f5f5f5;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .nav-btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-1px);
-    }
-
-    @media (max-width: 640px) {
-      .top-nav-inner {
-        padding-inline: 0.7rem;
-      }
-      .nav-logo-text span:last-child {
-        display: none;
-      }
-      .nav-chip {
-        display: none;
-      }
-    }
-
+    .top-nav-left{display:flex;align-items:center;gap:.6rem}
+    .nav-logo-mark{width:20px;height:20px;border-radius:6px;background:var(--bg-gradient);box-shadow:0 0 15px rgba(255,255,255,.35);position:relative;overflow:hidden}
+    .nav-logo-mark::after{content:"";position:absolute;inset:35% 5% 5% 35%;border-radius:999px;border:1px solid rgba(0,0,0,.4);opacity:.8}
+    .nav-logo-text{display:flex;flex-direction:column;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em}
+    .nav-logo-text span:first-child{font-weight:700}
+    .nav-logo-text span:last-child{font-size:.68rem;opacity:.7}
+    .nav-chip{font-size:.65rem;padding:.2rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.4);text-transform:uppercase;letter-spacing:.16em;opacity:.85}
+    .nav-btn{border-radius:999px;padding:.4rem .9rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.35rem;transition:.13s}
+    .nav-btn-primary{background:var(--bg-gradient);color:#101010;box-shadow:0 12px 30px rgba(0,0,0,.9)}
+    .nav-btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(0,0,0,.95)}
+    .nav-btn-ghost{background:rgba(10,10,20,.8);color:#f5f5f5;border:1px solid rgba(255,255,255,.18)}
+    .nav-btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+    @media (max-width:640px){.top-nav-inner{padding-inline:.7rem}.nav-logo-text span:last-child{display:none}.nav-chip{display:none}}
     /* HERO */
-
-    .hero {
-      min-height: 78vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5rem 1.25rem 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .hero{min-height:78vh;display:flex;align-items:center;justify-content:center;padding:5rem 1.25rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 0% -20%,rgba(255,144,193,.6),transparent 55%),radial-gradient(circle at 110% 120%,rgba(0,212,255,.6),transparent 55%);opacity:.7;filter:blur(14px);z-index:-2;animation:floatBg 22s linear infinite alternate}
+    .hero::after{content:"";position:absolute;inset:-10%;background:radial-gradient(circle at 50% -20%,rgba(0,0,0,.9),transparent 55%);z-index:-1}
+    @keyframes floatBg{from{transform:translate3d(-6%,-4%,0) rotate(0)}to{transform:translate3d(6%,2%,0) rotate(4deg)}}
+    .hero-inner{max-width:960px;margin:0 auto}
+    .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .9rem;border-radius:999px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.18);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+    .pill-dot{width:7px;height:7px;border-radius:50%;background:#00ffb3;box-shadow:0 0 8px #00ffb3}
+    h1{font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.05;margin-bottom:1rem;text-shadow:0 3px 20px rgba(0,0,0,.7)}
+    h1 .highlight{background:var(--bg-gradient);-webkit-background-clip:text;color:transparent}
+    .hero-sub{max-width:640px;margin:.5rem auto 1.6rem;font-size:.98rem;opacity:.88}
+    .hero-cta{display:flex;justify-content:center;gap:.85rem;flex-wrap:wrap;margin-bottom:1.75rem}
+    .btn{border-radius:999px;padding:.75rem 1.4rem;font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:.5rem;transition:.12s;text-transform:uppercase;letter-spacing:.06em}
+    .btn-primary{background:var(--bg-gradient);color:#111;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+    .btn-primary:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,.65)}
+    .btn-ghost{background:rgba(0,0,0,.6);color:#f5f5f5;border:1px solid rgba(255,255,255,.22)}
+    .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
+    .hero-bottom{font-size:.85rem;opacity:.8}
+    .section{padding:2rem 1.25rem 3rem;max-width:1200px;margin:0 auto}
+    .section-header{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
+    .counter{font-size:.9rem;opacity:.85}
+    .counter span{font-weight:600;color:#ffeb3b}
+    /* GRID WRAPPER */
+    .grid-wrapper{
+      background:radial-gradient(circle at top left,#ff6fd8 0,#111 40%),
+                 radial-gradient(circle at bottom right,#00d4ff 0,#000 45%);
+      border-radius:22px;padding:1rem;box-shadow:0 18px 60px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.12)
     }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0% -20%, rgba(255, 144, 193, 0.6), transparent 55%),
-        radial-gradient(circle at 110% 120%, rgba(0, 212, 255, 0.6), transparent 55%);
-      opacity: 0.7;
-      filter: blur(14px);
-      z-index: -2;
-      animation: floatBg 22s linear infinite alternate;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: -10%;
-      background: radial-gradient(circle at 50% -20%, rgba(0, 0, 0, 0.9), transparent 55%);
-      z-index: -1;
-    }
-
-    @keyframes floatBg {
-      from {
-        transform: translate3d(-6%, -4%, 0) rotate(0deg);
-      }
-      to {
-        transform: translate3d(6%, 2%, 0) rotate(4deg);
-      }
-    }
-
-    .hero-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.25rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 1rem;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #00ffb3;
-      box-shadow: 0 0 8px #00ffb3;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 5vw, 3.4rem);
-      line-height: 1.05;
-      margin-bottom: 1rem;
-      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.7);
-    }
-
-    h1 span.highlight {
-      background: var(--bg-gradient);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      max-width: 640px;
-      margin: 0.5rem auto 1.6rem;
-      font-size: 0.98rem;
-      opacity: 0.88;
-    }
-
-    .hero-cta {
-      display: flex;
-      justify-content: center;
-      gap: 0.85rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.75rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.75rem 1.4rem;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: transform 0.12s ease, box-shadow 0.12s ease,
-        background 0.12s ease, color 0.12s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .btn-primary {
-      background: var(--bg-gradient);
-      color: #111;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
-    }
-
-    .btn-ghost {
-      background: rgba(0, 0, 0, 0.6);
-      color: #f5f5f5;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .hero-bottom {
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-
-    .section {
-      padding: 2rem 1.25rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1rem;
-    }
-
-    .section-header h2 {
-      font-size: 1.3rem;
-    }
-
-    .counter {
-      font-size: 0.9rem;
-      opacity: 0.85;
-    }
-
-    .counter span {
-      font-weight: 600;
-      color: #ffeb3b;
-    }
-
-    /* GRID / MILLION WALL */
-
-    .grid-wrapper {
-      background: radial-gradient(circle at top left, #ff6fd8 0, #111 40%),
-        radial-gradient(circle at bottom right, #00d4ff 0, #000 45%);
-      border-radius: 22px;
-      padding: 1rem;
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .grid-inner {
-      background: rgba(5, 5, 10, 0.9);
-      border-radius: 18px;
-      padding: 0.25rem;
-      overflow: hidden;
-      max-height: 70vh;
-    }
-
-    .million-wall {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #pixelCanvas {
-      width: min(900px, 100%);
-      height: min(900px, 100vw);
-      image-rendering: pixelated;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
-      cursor: crosshair;
-      background: #111;
-    }
-
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 0.85rem;
-      font-size: 0.78rem;
-    }
-
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .legend-swatch {
-      width: 12px;
-      height: 12px;
-      border-radius: 4px;
-    }
-
-    .legend-swatch.free {
-      background: linear-gradient(135deg, #52ff9f, #00c3ff);
-    }
-
-    .legend-swatch.basic {
-      background: linear-gradient(135deg, #ffcc70, #ff6f61);
-    }
-
-    .legend-swatch.premium {
-      background: linear-gradient(135deg, #c471f5, #fa71cd);
-    }
-
+    .grid-inner{background:rgba(5,5,10,.9);border-radius:18px;padding:.25rem;overflow:hidden;max-height:70vh}
+    .million-wall{position:relative;display:flex;align-items:center;justify-content:center}
+    #pixelCanvas{width:min(900px,100%);height:min(900px,100vw);image-rendering:pixelated;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.85);cursor:crosshair;background:#111}
+    .legend{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.85rem;font-size:.78rem}
+    .legend-item{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:999px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15)}
+    .legend-swatch{width:12px;height:12px;border-radius:4px}
+    .legend-swatch.free{background:linear-gradient(135deg,#52ff9f,#00c3ff)}
+    .legend-swatch.basic{background:linear-gradient(135deg,#ffcc70,#ff6f61)}
+    .legend-swatch.premium{background:linear-gradient(135deg,#c471f5,#fa71cd)}
     /* Tooltip */
-
-    .pixel-tooltip {
-      position: absolute;
-      pointer-events: none;
-      transform: translate(-50%, -120%);
-      z-index: 5;
+    .pixel-tooltip{position:absolute;pointer-events:none;transform:translate(-50%,-120%);z-index:5}
+    .pixel-tooltip-inner{
+      display:inline-flex;align-items:center;gap:.6rem;padding:.45rem .7rem;border-radius:999px;
+      background:rgba(5,5,15,.95);border:1px solid rgba(255,255,255,.2);
+      box-shadow:0 12px 30px rgba(0,0,0,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);max-width:260px
     }
-
-    .pixel-tooltip-inner {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.45rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(5, 5, 15, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      max-width: 260px;
-    }
-
-    .pixel-tooltip-preview {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: radial-gradient(circle at top left, #ff6fd8, #00d4ff);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      flex-shrink: 0;
-    }
-
-    .pixel-tooltip-text {
-      font-size: 0.8rem;
-      line-height: 1.3;
-    }
-
-    .pixel-tooltip-title {
-      font-weight: 600;
-      margin-bottom: 0.12rem;
-    }
-
-    .pixel-tooltip-status {
-      opacity: 0.75;
-    }
-
-    /* Archive mode toggle */
-
-    .archive-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(0, 0, 0, 0.6);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      cursor: pointer;
-      opacity: 0.9;
-    }
-
-    .archive-toggle span.dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #00ff8a;
-      box-shadow: 0 0 8px #00ff8a;
-    }
-
-    body.archive-mode #pixelCanvas {
-      cursor: default;
-    }
-
-    body.archive-mode .archive-toggle span.dot {
-      background: #ff3b6b;
-      box-shadow: 0 0 8px #ff3b6b;
-    }
-
-    body.archive-mode .archive-toggle-label::after {
-      content: "ARCHIVE ON";
-    }
-
-    .archive-toggle-label::after {
-      content: "ARCHIVE OFF";
-    }
-
-    /* INFO / PRICING / FAQ */
-
-    .info-grid {
-      display: grid;
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      .info-grid {
-        grid-template-columns: 2fr 1.4fr;
-      }
-    }
-
-    .info-card {
-      background: radial-gradient(circle at top left, #222 0, #090909 55%);
-      border-radius: 18px;
-      padding: 1.2rem 1.4rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
-      font-size: 0.92rem;
-      color: var(--text-soft);
-    }
-
-    .info-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.6rem;
-      color: #ffffff;
-    }
-
-    .info-list {
-      list-style: none;
-      display: grid;
-      gap: 0.4rem;
-      margin-top: 0.4rem;
-    }
-
-    .info-list li::before {
-      content: "✦";
-      margin-right: 0.4rem;
-      color: #ffcc70;
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-      padding: 0.3rem 0;
-    }
-
-    .price-tier-name {
-      font-weight: 600;
-    }
-
-    .price-tier-value {
-      font-weight: 600;
-      color: #ffeb3b;
-    }
-
-    .footnote {
-      font-size: 0.8rem;
-      opacity: 0.72;
-      margin-top: 0.6rem;
-    }
-
-    .faq-section .info-card h3 {
-      margin-bottom: 0.4rem;
-    }
-
-    /* FOOTER */
-
-    .site-footer {
-      padding-top: 1.5rem;
-      padding-bottom: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: rgba(245, 245, 245, 0.9);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: baseline;
-    }
-
-    .footer-main h3 {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .footer-main p {
-      max-width: 360px;
-      opacity: 0.8;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-weight: 500;
-      opacity: 0.9;
-    }
-
-    .footer-links a:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
-
-    .footer-copy {
-      margin-top: 1rem;
-      opacity: 0.6;
-      font-size: 0.78rem;
-    }
-
+    .pixel-tooltip-preview{width:40px;height:40px;border-radius:10px;background:radial-gradient(circle at top left,#ff6fd8,#00d4ff);background-size:cover;background-position:center;flex-shrink:0}
+    .pixel-tooltip-text{font-size:.8rem;line-height:1.3}
+    .pixel-tooltip-title{font-weight:600;margin-bottom:.12rem}
+    .pixel-tooltip-status{opacity:.75}
+    /* Archive toggle */
+    .archive-toggle{display:inline-flex;align-items:center;gap:.25rem;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;opacity:.9}
+    .archive-toggle .dot{width:7px;height:7px;border-radius:50%;background:#00ff8a;box-shadow:0 0 8px #00ff8a}
+    body.archive-mode #pixelCanvas{cursor:default}
+    body.archive-mode .archive-toggle .dot{background:#ff3b6b;box-shadow:0 0 8px #ff3b6b}
+    body.archive-mode .archive-toggle-label::after{content:"ARCHIVE ON"}
+    .archive-toggle-label::after{content:"ARCHIVE OFF"}
+    /* Info cards & Footer & Modal (short) */
+    .info-grid{display:grid;gap:1.2rem;margin-top:2rem}
+    @media (min-width:900px){.info-grid{grid-template-columns:2fr 1.4fr}}
+    .info-card{background:radial-gradient(circle at top left,#222 0,#090909 55%);border-radius:18px;padding:1.2rem 1.4rem;border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 40px rgba(0,0,0,.7);font-size:.92rem;color:rgba(245,245,245,.82)}
+    .info-card h3{font-size:1.05rem;margin-bottom:.6rem;color:#fff}
+    .info-list{list-style:none;display:grid;gap:.4rem;margin-top:.4rem}
+    .info-list li::before{content:"✦";margin-right:.4rem;color:#ffcc70}
+    .price-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed rgba(255,255,255,.15);padding:.3rem 0}
+    .price-tier-name{font-weight:600}.price-tier-value{font-weight:600;color:#ffeb3b}
+    .footnote{font-size:.8rem;opacity:.72;margin-top:.6rem}
+    .site-footer{padding-top:1.5rem;padding-bottom:2rem;border-top:1px solid rgba(255,255,255,.12);margin-top:1rem;font-size:.85rem;color:rgba(245,245,245,.9)}
+    .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:baseline}
+    .footer-links{display:flex;gap:.75rem;flex-wrap:wrap}
+    .footer-links a{font-weight:500;opacity:.9}.footer-links a:hover{text-decoration:underline;opacity:1}
+    .footer-copy{margin-top:1rem;opacity:.6;font-size:.78rem}
     /* MODAL */
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
-    }
-
-    .modal {
-      background: radial-gradient(circle at top left, #1e1b2f, #050509);
-      border-radius: 22px;
-      padding: 1.4rem 1.5rem;
-      max-width: 420px;
-      width: 92%;
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      position: relative;
-    }
-
-    .modal h3 {
-      margin-bottom: 0.4rem;
-      font-size: 1.15rem;
-    }
-
-    .modal p {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      opacity: 0.9;
-    }
-
-    .modal-tagline {
-      font-size: 0.8rem;
-      opacity: 0.7;
-      margin-bottom: 0.8rem;
-    }
-
-    .modal-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-size: 0.9rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .modal-label {
-      opacity: 0.7;
-    }
-
-    .modal-value {
-      font-weight: 600;
-    }
-
-    .modal-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.9rem;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.8rem;
-      background: transparent;
-      border: none;
-      color: #aaa;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-
-    .modal-small {
-      font-size: 0.78rem;
-      opacity: 0.75;
-      margin-top: 0.6rem;
-    }
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:50}
+    .modal{background:radial-gradient(circle at top left,#1e1b2f,#050509);border-radius:22px;padding:1.4rem 1.5rem;max-width:420px;width:92%;box-shadow:0 22px 60px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.18);position:relative}
+    .modal h3{margin-bottom:.4rem;font-size:1.15rem}
+    .modal p{font-size:.9rem;margin-bottom:.5rem;opacity:.9}
+    .modal-tagline{font-size:.8rem;opacity:.7;margin-bottom:.8rem}
+    .modal-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;margin-bottom:.35rem}
+    .modal-label{opacity:.7}.modal-value{font-weight:600}
+    .modal-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+    .modal-close{position:absolute;top:.6rem;right:.8rem;background:transparent;border:none;color:#aaa;font-size:1.2rem}
+    .modal-small{font-size:.78rem;opacity:.75;margin-top:.6rem}
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <nav class="top-nav">
     <div class="top-nav-inner">
       <div class="top-nav-left">
@@ -733,20 +137,9 @@
         <div class="nav-chip">1,000,000 pixels • $1 each</div>
       </div>
       <div class="top-nav-actions">
-        <a
-          href="https://twitter.com/viralwall"
-          class="nav-btn nav-btn-ghost"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          🐦 Twitter
-        </a>
-        <button class="nav-btn nav-btn-primary" id="buyBlockBtn">
-          💸 Buy a block
-        </button>
-        <button class="nav-btn nav-btn-ghost" id="contactBtn">
-          ✉️ Contact
-        </button>
+        <a href="https://twitter.com/viralwall" class="nav-btn nav-btn-ghost" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
+        <button class="nav-btn nav-btn-primary" id="buyBlockBtn">💸 Buy a block</button>
+        <button class="nav-btn nav-btn-ghost" id="contactBtn">✉️ Contact</button>
       </div>
     </div>
   </nav>
@@ -754,45 +147,25 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-inner">
-      <div class="pill">
-        <span class="pill-dot"></span>
-        INTERNET ART EXPERIMENT • 2025 EDITION
-      </div>
-      <h1>
-        <span class="highlight">The Viral $1 Wall</span><br />
-        Buy a tiny block. Add your chaos.
-      </h1>
-      <p class="hero-sub">
-        A ridiculous, colorful tribute to early internet experiments. There are
-        1,000,000 tiny pixels on this wall. Buy one for <strong>$1</strong>,
-        drop your logo, meme, link, project or chaos, and become part of Internet
-        history 2025.
-      </p>
+      <div class="pill"><span class="pill-dot"></span> INTERNET ART EXPERIMENT • 2025 EDITION</div>
+      <h1><span class="highlight">The Viral $1 Wall</span><br/>Buy a tiny block. Add your chaos.</h1>
+      <p class="hero-sub">A ridiculous, colorful tribute to early internet experiments. There are <strong>1,000,000</strong> tiny pixels on this wall. Buy one for <strong>$1</strong>, drop your logo, meme, link, project or chaos, and become part of Internet history 2025.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary" id="scrollToWall">
-          🚀 View the Wall
-        </button>
-        <button class="btn btn-ghost" id="howItWorks">
-          ❓ How does it work?
-        </button>
+        <button class="btn btn-primary" id="scrollToWall">🚀 View the Wall</button>
+        <button class="btn btn-ghost" id="howItWorks">❓ How does it work?</button>
       </div>
-      <div class="hero-bottom">
-        <span>⚡ Limited experiment. Once the pixels are gone, they are gone.</span>
-      </div>
+      <div class="hero-bottom">⚡ Limited experiment. Once the pixels are gone, they are gone.</div>
     </div>
   </header>
 
-  <!-- MAIN SECTION -->
+  <!-- WALL -->
   <main class="section" id="wallSection">
     <div class="section-header">
       <h2>Live Wall</h2>
       <div class="counter">
         Filled pixels: <span id="filledCount">0</span> / <span>1,000,000</span>
         &nbsp;&nbsp;
-        <button class="archive-toggle" id="archiveToggle">
-          <span class="dot"></span>
-          <span class="archive-toggle-label"></span>
-        </button>
+        <button class="archive-toggle" id="archiveToggle"><span class="dot"></span><span class="archive-toggle-label"></span></button>
       </div>
     </div>
 
@@ -800,7 +173,7 @@
       <div class="grid-inner million-wall">
         <canvas id="pixelCanvas"></canvas>
 
-        <!-- Tooltip / preview on hover -->
+        <!-- Tooltip -->
         <div id="pixelTooltip" class="pixel-tooltip" hidden>
           <div class="pixel-tooltip-inner">
             <div class="pixel-tooltip-preview" id="pixelPreview"></div>
@@ -813,18 +186,9 @@
       </div>
 
       <div class="legend">
-        <div class="legend-item">
-          <span class="legend-swatch free"></span>
-          Free pixel • $1
-        </div>
-        <div class="legend-item">
-          <span class="legend-swatch basic"></span>
-          Claimed pixel
-        </div>
-        <div class="legend-item">
-          <span class="legend-swatch premium"></span>
-          Premium highlight (manual)
-        </div>
+        <div class="legend-item"><span class="legend-swatch free"></span>Free pixel • $1</div>
+        <div class="legend-item"><span class="legend-swatch basic"></span>Claimed pixel</div>
+        <div class="legend-item"><span class="legend-swatch premium"></span>Premium highlight (manual)</div>
       </div>
     </div>
 
@@ -835,54 +199,29 @@
           <li>Hover over the wall to explore pixel IDs.</li>
           <li>Click any free pixel (you'll see its ID in the popup).</li>
           <li>Pay $1 via Stripe (card, Apple Pay, Google Pay).</li>
-          <li>
-            After payment you’re redirected to a short form to send your pixel ID,
-            logo/image and URL.
-          </li>
+          <li>After payment you’re redirected to a short form to send your pixel ID, logo/image and URL.</li>
           <li>The wall stays online for at least all of 2025 as a weird Internet monument.</li>
         </ul>
-        <p class="footnote">
-          This is an art / chaos project. No promise of traffic, only vibes,
-          screenshots and internet history.
-        </p>
+        <p class="footnote">This is an art / chaos project. No promise of traffic, only vibes, screenshots and internet history.</p>
       </div>
 
       <div class="info-card">
         <h3>Pricing tiers (example)</h3>
-        <div class="price-row">
-          <span class="price-tier-name">Single pixel • basic chaos</span>
-          <span class="price-tier-value">$1</span>
-        </div>
-        <div class="price-row">
-          <span class="price-tier-name">Pixel clusters • mini logo area</span>
-          <span class="price-tier-value">$5–$50</span>
-        </div>
-        <div class="price-row">
-          <span class="price-tier-name">Premium area • big logo / animation</span>
-          <span class="price-tier-value">$100+</span>
-        </div>
-        <p class="footnote">
-          For launch we keep it simple: $1 per normal pixel. Premium clusters can be handled manually via email.
-        </p>
+        <div class="price-row"><span class="price-tier-name">Single pixel • basic chaos</span><span class="price-tier-value">$1</span></div>
+        <div class="price-row"><span class="price-tier-name">Pixel clusters • mini logo area</span><span class="price-tier-value">$5–$50</span></div>
+        <div class="price-row"><span class="price-tier-name">Premium area • big logo / animation</span><span class="price-tier-value">$100+</span></div>
+        <p class="footnote">For launch we keep it simple: $1 per normal pixel. Premium clusters can be handled manually via email.</p>
       </div>
     </div>
   </main>
 
-  <!-- FAQ -->
+  <!-- QUESTIONS -->
   <section class="section faq-section" id="faqSection">
-    <div class="section-header">
-      <h2>FAQ – Frequently Asked Questions</h2>
-    </div>
-
+    <div class="section-header"><h2>Questions – Frequently Asked Chaos</h2></div>
     <div class="info-grid">
       <div class="info-card">
         <h3>What exactly am I buying?</h3>
-        <p>
-          You’re buying the right to place a tiny visual pixel (or cluster of pixels)
-          with your logo, meme, project or message on The Viral $1 Wall for the
-          duration of the experiment (at least all of 2025).
-        </p>
-
+        <p>You’re buying the right to place a tiny visual pixel (or cluster of pixels) with your logo, meme, project or message on The Viral $1 Wall for the duration of the experiment (at least all of 2025).</p>
         <h3 style="margin-top:1rem;">How does the process work?</h3>
         <ul class="info-list">
           <li>You hover, pick a free pixel and note its ID.</li>
@@ -891,25 +230,14 @@
           <li>We manually add your pixel (or pixels) to the wall within 24–48 hours.</li>
         </ul>
       </div>
-
       <div class="info-card">
         <h3>More questions</h3>
         <ul class="info-list">
-          <li><strong>How long will my pixel stay online?</strong>  
-            At least all of 2025. If the project goes viral, we’ll keep it up longer as an archive.
-          </li>
-          <li><strong>Can I buy more than one pixel?</strong>  
-            Yes. You can claim multiple pixels or clusters – just submit all IDs in the form.
-          </li>
-          <li><strong>Can I change my image or link later?</strong>  
-            Once per pixel cluster for free – just email us from the same address you used in the form.
-          </li>
-          <li><strong>What kind of content is not allowed?</strong>  
-            No hate, illegal stuff, explicit adult content or scams. We reserve the right to reject/refund anything that breaks this.
-          </li>
-          <li><strong>Is this an investment?</strong>  
-            No. This is an art / nostalgia / internet chaos project. It’s for fun, not for ROI.
-          </li>
+          <li><strong>How long will my pixel stay online?</strong> At least all of 2025 (likely longer as an archive).</li>
+          <li><strong>Can I buy more than one pixel?</strong> Yes, you can claim multiple pixels or clusters.</li>
+          <li><strong>Can I change my image or link later?</strong> Once per pixel cluster for free – email us from the same address you used in the form.</li>
+          <li><strong>What content is not allowed?</strong> No hate, illegal stuff, explicit adult content or scams.</li>
+          <li><strong>Is this an investment?</strong> No. This is an art / nostalgia / internet chaos project.</li>
         </ul>
       </div>
     </div>
@@ -920,27 +248,14 @@
     <div class="footer-inner">
       <div class="footer-main">
         <h3>The Viral $1 Wall</h3>
-        <p>
-          A 2025 tribute to the original Million Dollar Homepage. Own a tiny piece
-          of Internet chaos for $1.
-        </p>
+        <p>A 2025 tribute to the original Million Dollar Homepage. Own a tiny piece of Internet chaos for $1.</p>
       </div>
       <div class="footer-links">
-        <a
-          href="https://twitter.com/viralwall"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          🐦 Twitter
-        </a>
-        <a href="mailto:vulkoshishkov87@gmail.com">
-          ✉️ Contact
-        </a>
+        <a href="https://twitter.com/viralwall" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
+        <a href="mailto:vulkoshishkov87@gmail.com">✉️ Contact</a>
       </div>
     </div>
-    <p class="footer-copy">
-      Built by humans who miss the weird old internet. Not investment advice.
-    </p>
+    <p class="footer-copy">Built by humans who miss the weird old internet. Not investment advice.</p>
   </footer>
 
   <!-- MODAL -->
@@ -949,75 +264,42 @@
       <button class="modal-close" id="modalClose">&times;</button>
       <h3 id="modalTitle">Pixel #123</h3>
       <p id="modalStatus">This pixel is currently free.</p>
-      <p class="modal-tagline">
-        Remember this number. After payment you’ll be redirected to a short form
-        where you’ll send us your logo/image and link.
-      </p>
-
-      <div class="modal-row">
-        <span class="modal-label">Pixel ID</span>
-        <span class="modal-value" id="modalBlockId">123</span>
-      </div>
-      <div class="modal-row">
-        <span class="modal-label">Status</span>
-        <span class="modal-value" id="modalBlockStatus">Free</span>
-      </div>
-      <div class="modal-row">
-        <span class="modal-label">Price</span>
-        <span class="modal-value" id="modalBlockPrice">$1</span>
-      </div>
-
+      <p class="modal-tagline">Remember this number. After payment you’ll be redirected to a short form where you’ll send us your logo/image and link.</p>
+      <div class="modal-row"><span class="modal-label">Pixel ID</span><span class="modal-value" id="modalBlockId">123</span></div>
+      <div class="modal-row"><span class="modal-label">Status</span><span class="modal-value" id="modalBlockStatus">Free</span></div>
+      <div class="modal-row"><span class="modal-label">Price</span><span class="modal-value" id="modalBlockPrice">$1</span></div>
       <div class="modal-actions">
-        <a
-          id="modalBuyLink"
-          class="btn btn-primary"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          💳 Claim this pixel (Stripe)
-        </a>
-        <button class="btn btn-ghost" id="modalEmailBtn">
-          📩 Or email us
-        </button>
+        <a id="modalBuyLink" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">💳 Claim this pixel (Stripe)</a>
+        <button class="btn btn-ghost" id="modalCopyLinkBtn">🔗 Copy link</button>
+        <button class="btn btn-ghost" id="modalEmailBtn">📩 Or email us</button>
       </div>
-
-      <p class="modal-small">
-        Flow: 1) Click “Claim this pixel (Stripe)”. 2) Pay $1. 3) You’ll land on a
-        form – enter this pixel ID, your logo/image and your URL there.
-        We manually add it to the wall within 24–48 hours.
-      </p>
+      <p class="modal-small">Flow: 1) Click “Claim this pixel (Stripe)”. 2) Pay $1. 3) You’ll land on a form – enter this pixel ID, your logo/image and your URL there. We add it to the wall within 24–48 hours.</p>
     </div>
   </div>
 
   <script>
-    // BASIC CONFIG
-    const STRIPE_CHECKOUT_URL =
-      "https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200";
+    /* ===== CONFIG ===== */
+    const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200";
     const CONTACT_EMAIL = "vulkoshishkov87@gmail.com";
-
-    // Pixel grid config: 1000 x 1000 = 1,000,000
     const PIXELS_PER_SIDE = 1000;
     const TOTAL_PIXELS = PIXELS_PER_SIDE * PIXELS_PER_SIDE;
 
-    // Claimed pixels (id от 1 до 1,000,000)
-    // Засега примерни – после ти добавяш реалните
-    const claimedPixels = new Set([
-      // пример: 123456, 789000
-    ]);
-
-    // Данни за пикселите с логота/линкове
+    /* ===== DEMO CLAIMED PIXELS ===== */
+    const claimedPixels = new Set([500500, 250250]);
     const pixelData = {
-      // пример:
-      // 123456: {
-      //   title: "Example Project",
-      //   url: "https://example.com",
-      //   image:
-      //     "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      // },
+      500500: {
+        title: "The Viral $1 Wall",
+        url: location.origin,
+        image: "https://dummyimage.com/160x160/00d4ff-ff6fd8.png&text=Viral+Wall"
+      },
+      250250: {
+        title: "Demo Sponsor",
+        url: "https://example.com",
+        image: "https://dummyimage.com/160x160/ffcc70-111.png&text=DEMO"
+      }
     };
 
-    // DOM елементи
+    /* ===== DOM ===== */
     const pixelCanvas = document.getElementById("pixelCanvas");
     const tooltip = document.getElementById("pixelTooltip");
     const tooltipTitle = document.getElementById("pixelTooltipTitle");
@@ -1034,253 +316,121 @@
     const modalBlockPrice = document.getElementById("modalBlockPrice");
     const modalBuyLink = document.getElementById("modalBuyLink");
     const modalEmailBtn = document.getElementById("modalEmailBtn");
+    const modalCopyLinkBtn = document.getElementById("modalCopyLinkBtn");
     const modalClose = document.getElementById("modalClose");
 
     let archiveMode = false;
     let hoverPixelId = null;
 
-   function initCanvas() {
-  const ctx = pixelCanvas.getContext("2d");
+    /* ===== CANVAS RENDER (EMPTY GRID) ===== */
+    function initCanvas(){
+      const ctx = pixelCanvas.getContext("2d");
+      pixelCanvas.width = PIXELS_PER_SIDE;
+      pixelCanvas.height = PIXELS_PER_SIDE;
 
-  // Размер на платното в "реални" пиксели
-  pixelCanvas.width = PIXELS_PER_SIDE;
-  pixelCanvas.height = PIXELS_PER_SIDE;
+      // 1) uniform background
+      ctx.fillStyle = "#151515";
+      ctx.fillRect(0,0,PIXELS_PER_SIDE,PIXELS_PER_SIDE);
 
-  // 1) Равномерен фон – всички пиксели са "празни"
-  ctx.fillStyle = "#151515";      // можеш да смениш с по-светло, ако искаш
-  ctx.fillRect(0, 0, PIXELS_PER_SIDE, PIXELS_PER_SIDE);
+      // 2) subtle grid (every 10px)
+      ctx.strokeStyle = "rgba(255,255,255,0.03)";
+      ctx.lineWidth = 1;
+      for(let x=0;x<PIXELS_PER_SIDE;x+=10){ctx.beginPath();ctx.moveTo(x+0.5,0);ctx.lineTo(x+0.5,PIXELS_PER_SIDE);ctx.stroke();}
+      for(let y=0;y<PIXELS_PER_SIDE;y+=10){ctx.beginPath();ctx.moveTo(0,y+0.5);ctx.lineTo(PIXELS_PER_SIDE,y+0.5);ctx.stroke();}
 
-  // 2) По желание: много лека решетка, за да се усеща мозайка (можеш да махнеш ако не ти хареса)
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
-  ctx.lineWidth = 1;
+      // 3) mark claimed pixels (slightly brighter)
+      claimedPixels.forEach(id=>{
+        const {x,y}=idToCoords(id);
+        ctx.fillStyle="rgba(255,255,255,0.7)";
+        ctx.fillRect(x,y,1,1);
+      });
 
-  // рисуваме вертикални линии през 10 пиксела
-  for (let x = 0; x < PIXELS_PER_SIDE; x += 10) {
-    ctx.beginPath();
-    ctx.moveTo(x + 0.5, 0);
-    ctx.lineTo(x + 0.5, PIXELS_PER_SIDE);
-    ctx.stroke();
-  }
-
-  // хоризонтални линии през 10 пиксела
-  for (let y = 0; y < PIXELS_PER_SIDE; y += 10) {
-    ctx.beginPath();
-    ctx.moveTo(0, y + 0.5);
-    ctx.lineTo(PIXELS_PER_SIDE, y + 0.5);
-    ctx.stroke();
-  }
-
-  // 3) Подсветка за вече заетите пиксели (ако има)
-  claimedPixels.forEach((id) => {
-    const { x, y } = idToCoords(id);
-    ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
-    ctx.fillRect(x, y, 1, 1);
-  });
-
-  // 4) Обновяваме броя
-  filledCountElement.textContent = claimedPixels.size.toString();
-}
-
-
-    function pickPalette() {
-      // пастелни цветове
-      const palettes = [
-        [255, 111, 216],
-        [255, 204, 112],
-        [0, 245, 160],
-        [0, 212, 255],
-        [240, 147, 251],
-        [246, 211, 101],
-        [130, 177, 255],
-        [185, 251, 192],
-      ];
-      return palettes[Math.floor(Math.random() * palettes.length)];
+      filledCountElement.textContent = claimedPixels.size.toString();
     }
 
-    function idToCoords(id) {
-      const index = id - 1;
-      const y = Math.floor(index / PIXELS_PER_SIDE);
-      const x = index % PIXELS_PER_SIDE;
-      return { x, y };
+    /* ===== HELPERS ===== */
+    function idToCoords(id){const index=id-1;const y=Math.floor(index/PIXELS_PER_SIDE);const x=index%PIXELS_PER_SIDE;return {x,y};}
+    function coordsToId(x,y){if(x<0||x>=PIXELS_PER_SIDE||y<0||y>=PIXELS_PER_SIDE)return null;return y*PIXELS_PER_SIDE+x+1;}
+    function updateTooltipPosition(e){const r=pixelCanvas.getBoundingClientRect();tooltip.style.left=`${e.clientX-r.left}px`;tooltip.style.top=`${e.clientY-r.top}px`;}
+    function pixelLink(id){return `${location.origin}${location.pathname}#pixel=${id}`;}
+    function openPixelFromHash(){const m=location.hash.match(/pixel=(\d+)/);if(!m)return;const id=parseInt(m[1],10);if(id>=1&&id<=TOTAL_PIXELS){openModalForPixel(id);}}
+
+    /* ===== INTERACTION ===== */
+    function handleMouseMove(e){
+      if(archiveMode){hideTooltip();return;}
+      const r=pixelCanvas.getBoundingClientRect();
+      const x=Math.floor((e.clientX-r.left)*PIXELS_PER_SIDE/r.width);
+      const y=Math.floor((e.clientY-r.top)*PIXELS_PER_SIDE/r.height);
+      const id=coordsToId(x,y);
+      if(!id){hideTooltip();return;}
+      hoverPixelId=id;
+
+      const data=pixelData[id];
+      const isClaimed=claimedPixels.has(id)||!!data;
+
+      tooltip.hidden=false;updateTooltipPosition(e);
+      tooltipTitle.textContent=data&&data.title?`${data.title} • #${id.toLocaleString()}`:`Pixel #${id.toLocaleString()}`;
+      tooltipStatus.textContent=isClaimed?(data&&data.url?"Claimed – click to view details":"Claimed pixel"):"Free • $1";
+      pixelPreview.style.backgroundImage = data&&data.image?`url(${data.image})`:"radial-gradient(circle at top left,#ff6fd8,#00d4ff)";
     }
+    function hideTooltip(){tooltip.hidden=true;hoverPixelId=null;}
+    function handleClick(){if(archiveMode||!hoverPixelId)return;openModalForPixel(hoverPixelId);}
 
-    function coordsToId(x, y) {
-      if (
-        x < 0 ||
-        x >= PIXELS_PER_SIDE ||
-        y < 0 ||
-        y >= PIXELS_PER_SIDE
-      ) {
-        return null;
-      }
-      return y * PIXELS_PER_SIDE + x + 1;
-    }
+    function openModalForPixel(id){
+      const data=pixelData[id];
+      const isClaimed=claimedPixels.has(id)||!!data;
 
-    function updateTooltipPosition(event) {
-      const rect = pixelCanvas.getBoundingClientRect();
-      tooltip.style.left = `${event.clientX - rect.left}px`;
-      tooltip.style.top = `${event.clientY - rect.top}px`;
-    }
+      modalTitle.textContent=`Pixel #${id.toLocaleString()}`;
+      modalBlockId.textContent=id.toLocaleString();
 
-    function handleMouseMove(event) {
-      if (archiveMode) {
-        hideTooltip();
-        return;
-      }
-
-      const rect = pixelCanvas.getBoundingClientRect();
-      const scaleX = PIXELS_PER_SIDE / rect.width;
-      const scaleY = PIXELS_PER_SIDE / rect.height;
-      const x = Math.floor((event.clientX - rect.left) * scaleX);
-      const y = Math.floor((event.clientY - rect.top) * scaleY);
-      const id = coordsToId(x, y);
-
-      if (!id) {
-        hideTooltip();
-        return;
-      }
-
-      hoverPixelId = id;
-
-      const data = pixelData[id];
-      const isClaimed = claimedPixels.has(id) || !!data;
-
-      tooltip.hidden = false;
-      updateTooltipPosition(event);
-
-      tooltipTitle.textContent = `Pixel #${id.toLocaleString()}`;
-
-      if (data && data.title) {
-        tooltipTitle.textContent = `${data.title} • #${id.toLocaleString()}`;
-      }
-
-      if (isClaimed) {
-        tooltipStatus.textContent = data && data.url
-          ? "Claimed – click to open details"
-          : "Claimed pixel";
-      } else {
-        tooltipStatus.textContent = "Free • $1";
-      }
-
-      if (data && data.image) {
-        pixelPreview.style.backgroundImage = `url(${data.image})`;
-      } else {
-        pixelPreview.style.backgroundImage =
-          "radial-gradient(circle at top left, #ff6fd8, #00d4ff)";
-      }
-    }
-
-    function hideTooltip() {
-      tooltip.hidden = true;
-      hoverPixelId = null;
-    }
-
-    function handleClick() {
-      if (archiveMode || !hoverPixelId) return;
-      openModalForPixel(hoverPixelId);
-    }
-
-    function openModalForPixel(id) {
-      const data = pixelData[id];
-      const isClaimed = claimedPixels.has(id) || !!data;
-
-      modalTitle.textContent = `Pixel #${id.toLocaleString()}`;
-      modalBlockId.textContent = id.toLocaleString();
-
-      if (isClaimed) {
-        if (data && data.url) {
-          modalStatusText.textContent =
-            "This pixel is already claimed. You can visit their link below.";
-          modalBlockStatus.textContent = "Taken";
-          modalBlockPrice.textContent = "—";
-          modalBuyLink.style.display = "inline-flex";
-          modalBuyLink.textContent = "🔗 Visit this pixel";
-          modalBuyLink.href = data.url;
-        } else {
-          modalStatusText.textContent =
-            "This pixel is already claimed. Click around to find a free one!";
-          modalBlockStatus.textContent = "Taken";
-          modalBlockPrice.textContent = "—";
-          modalBuyLink.style.display = "none";
+      if(isClaimed){
+        if(data&&data.url){
+          modalStatusText.textContent="This pixel is already claimed. You can visit their link below.";
+          modalBlockStatus.textContent="Taken"; modalBlockPrice.textContent="—";
+          modalBuyLink.style.display="inline-flex"; modalBuyLink.textContent="🔗 Visit this pixel"; modalBuyLink.href=data.url;
+        }else{
+          modalStatusText.textContent="This pixel is already claimed. Click around to find a free one!";
+          modalBlockStatus.textContent="Taken"; modalBlockPrice.textContent="—";
+          modalBuyLink.style.display="none";
         }
-      } else {
-        modalStatusText.textContent =
-          "This pixel is currently free. After payment you'll be redirected to a form where you send your pixel ID, logo/image and link.";
-        modalBlockStatus.textContent = "Free";
-        modalBlockPrice.textContent = "$1";
-        modalBuyLink.style.display = "inline-flex";
-        modalBuyLink.textContent = "💳 Claim this pixel (Stripe)";
-        modalBuyLink.href = STRIPE_CHECKOUT_URL;
+      }else{
+        modalStatusText.textContent="This pixel is currently free. After payment you'll be redirected to a form where you send your pixel ID, logo/image and link.";
+        modalBlockStatus.textContent="Free"; modalBlockPrice.textContent="$1";
+        modalBuyLink.style.display="inline-flex"; modalBuyLink.textContent="💳 Claim this pixel (Stripe)"; modalBuyLink.href=STRIPE_CHECKOUT_URL;
       }
 
-      modalEmailBtn.onclick = () => {
-        const subject = encodeURIComponent(
-          `The Viral $1 Wall – Pixel #${id.toLocaleString()}`
-        );
-        const body = encodeURIComponent(
-          `Hey,\n\nI want to claim Pixel #${id.toLocaleString()} on The Viral $1 Wall.\n\nMy link:\nMy image/logo:\n\n–`
-        );
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      modalEmailBtn.onclick=()=>{
+        const subject=encodeURIComponent(`The Viral $1 Wall – Pixel #${id.toLocaleString()}`);
+        const body=encodeURIComponent(`Hey,\n\nI want to claim Pixel #${id.toLocaleString()} on The Viral $1 Wall.\n\nMy link:\nMy image/logo:\n\n–`);
+        window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
       };
 
-      modalBackdrop.style.display = "flex";
+      modalCopyLinkBtn.onclick=async()=>{
+        try{await navigator.clipboard.writeText(pixelLink(id));modalCopyLinkBtn.textContent="✅ Copied!";setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200);}
+        catch{modalCopyLinkBtn.textContent="⚠️ Copy failed";setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200);}
+      };
+
+      // update hash for share
+      history.replaceState(null,"",`#pixel=${id}`);
+
+      modalBackdrop.style.display="flex";
     }
 
-    // Archive Mode toggle
-    archiveToggle.addEventListener("click", () => {
-      archiveMode = !archiveMode;
-      document.body.classList.toggle("archive-mode", archiveMode);
-    });
+    /* ===== WIRES ===== */
+    archiveToggle.addEventListener("click",()=>{archiveMode=!archiveMode;document.body.classList.toggle("archive-mode",archiveMode);});
+    pixelCanvas.addEventListener("mousemove",handleMouseMove);
+    pixelCanvas.addEventListener("mouseleave",hideTooltip);
+    pixelCanvas.addEventListener("click",handleClick);
+    modalBackdrop.addEventListener("click",(e)=>{if(e.target===modalBackdrop)modalBackdrop.style.display="none";});
+    modalClose.addEventListener("click",()=>{modalBackdrop.style.display="none";});
 
-    modalBackdrop.addEventListener("click", (e) => {
-      if (e.target === modalBackdrop) {
-        modalBackdrop.style.display = "none";
-      }
-    });
+    document.getElementById("scrollToWall").addEventListener("click",()=>document.getElementById("wallSection").scrollIntoView({behavior:"smooth"}));
+    document.getElementById("howItWorks").addEventListener("click",()=>document.getElementById("faqSection").scrollIntoView({behavior:"smooth"}));
+    const buyBlockBtn=document.getElementById("buyBlockBtn"); if(buyBlockBtn){buyBlockBtn.addEventListener("click",()=>document.getElementById("wallSection").scrollIntoView({behavior:"smooth"}));}
+    const contactBtn=document.getElementById("contactBtn"); if(contactBtn){contactBtn.addEventListener("click",()=>{const subject=encodeURIComponent("The Viral $1 Wall – Question");const body=encodeURIComponent("Hey,\n\nI have a question about The Viral $1 Wall.\n\n–");window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;});}
 
-    modalClose.addEventListener("click", () => {
-      modalBackdrop.style.display = "none";
-    });
-
-    // Hero / nav buttons
-    document.getElementById("scrollToWall").addEventListener("click", () => {
-      document.getElementById("wallSection").scrollIntoView({
-        behavior: "smooth",
-      });
-    });
-
-    document.getElementById("howItWorks").addEventListener("click", () => {
-      document.getElementById("faqSection").scrollIntoView({
-        behavior: "smooth",
-      });
-    });
-
-    const buyBlockBtn = document.getElementById("buyBlockBtn");
-    if (buyBlockBtn) {
-      buyBlockBtn.addEventListener("click", () => {
-        document.getElementById("wallSection").scrollIntoView({
-          behavior: "smooth",
-        });
-      });
-    }
-
-    const contactBtn = document.getElementById("contactBtn");
-    if (contactBtn) {
-      contactBtn.addEventListener("click", () => {
-        const subject = encodeURIComponent("The Viral $1 Wall – Question");
-        const body = encodeURIComponent(
-          "Hey,\n\nI have a question about The Viral $1 Wall.\n\n–"
-        );
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-      });
-    }
-
-    // Canvas събития
-    pixelCanvas.addEventListener("mousemove", handleMouseMove);
-    pixelCanvas.addEventListener("mouseleave", hideTooltip);
-    pixelCanvas.addEventListener("click", handleClick);
-
-    document.addEventListener("DOMContentLoaded", initCanvas);
+    window.addEventListener("hashchange",openPixelFromHash);
+    document.addEventListener("DOMContentLoaded",()=>{initCanvas();openPixelFromHash();});
   </script>
 </body>
 </html>
