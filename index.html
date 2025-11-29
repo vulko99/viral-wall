@@ -18,6 +18,7 @@
     }
     a{color:inherit;text-decoration:none}
     button{font-family:inherit;border:none;background:none;cursor:pointer}
+
     /* NAV */
     .top-nav{position:fixed;top:.8rem;left:0;right:0;z-index:40;pointer-events:none}
     .top-nav-inner{
@@ -41,6 +42,7 @@
     .nav-btn-ghost{background:rgba(10,10,20,.8);color:#f5f5f5;border:1px solid rgba(255,255,255,.18)}
     .nav-btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
     @media (max-width:640px){.top-nav-inner{padding-inline:.7rem}.nav-logo-text span:last-child{display:none}.nav-chip{display:none}}
+
     /* HERO */
     .hero{min-height:78vh;display:flex;align-items:center;justify-content:center;padding:5rem 1.25rem 2.5rem;text-align:center;position:relative;overflow:hidden}
     .hero::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 0% -20%,rgba(255,144,193,.6),transparent 55%),radial-gradient(circle at 110% 120%,rgba(0,212,255,.6),transparent 55%);opacity:.7;filter:blur(14px);z-index:-2;animation:floatBg 22s linear infinite alternate}
@@ -59,10 +61,12 @@
     .btn-ghost{background:rgba(0,0,0,.6);color:#f5f5f5;border:1px solid rgba(255,255,255,.22)}
     .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
     .hero-bottom{font-size:.85rem;opacity:.8}
+
     .section{padding:2rem 1.25rem 3rem;max-width:1200px;margin:0 auto}
     .section-header{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
     .counter{font-size:.9rem;opacity:.85}
     .counter span{font-weight:600;color:#ffeb3b}
+
     /* GRID WRAPPER */
     .grid-wrapper{
       background:radial-gradient(circle at top left,#ff6fd8 0,#111 40%),
@@ -78,6 +82,7 @@
     .legend-swatch.free{background:linear-gradient(135deg,#52ff9f,#00c3ff)}
     .legend-swatch.basic{background:linear-gradient(135deg,#ffcc70,#ff6f61)}
     .legend-swatch.premium{background:linear-gradient(135deg,#c471f5,#fa71cd)}
+
     /* Tooltip */
     .pixel-tooltip{position:absolute;pointer-events:none;transform:translate(-50%,-120%);z-index:5}
     .pixel-tooltip-inner{
@@ -89,6 +94,7 @@
     .pixel-tooltip-text{font-size:.8rem;line-height:1.3}
     .pixel-tooltip-title{font-weight:600;margin-bottom:.12rem}
     .pixel-tooltip-status{opacity:.75}
+
     /* Archive toggle */
     .archive-toggle{display:inline-flex;align-items:center;gap:.25rem;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;opacity:.9}
     .archive-toggle .dot{width:7px;height:7px;border-radius:50%;background:#00ff8a;box-shadow:0 0 8px #00ff8a}
@@ -96,7 +102,8 @@
     body.archive-mode .archive-toggle .dot{background:#ff3b6b;box-shadow:0 0 8px #ff3b6b}
     body.archive-mode .archive-toggle-label::after{content:"ARCHIVE ON"}
     .archive-toggle-label::after{content:"ARCHIVE OFF"}
-    /* Info cards & Footer & Modal (short) */
+
+    /* Info cards & Footer & Modal */
     .info-grid{display:grid;gap:1.2rem;margin-top:2rem}
     @media (min-width:900px){.info-grid{grid-template-columns:2fr 1.4fr}}
     .info-card{background:radial-gradient(circle at top left,#222 0,#090909 55%);border-radius:18px;padding:1.2rem 1.4rem;border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 40px rgba(0,0,0,.7);font-size:.92rem;color:rgba(245,245,245,.82)}
@@ -111,6 +118,7 @@
     .footer-links{display:flex;gap:.75rem;flex-wrap:wrap}
     .footer-links a{font-weight:500;opacity:.9}.footer-links a:hover{text-decoration:underline;opacity:1}
     .footer-copy{margin-top:1rem;opacity:.6;font-size:.78rem}
+
     /* MODAL */
     .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:50}
     .modal{background:radial-gradient(circle at top left,#1e1b2f,#050509);border-radius:22px;padding:1.4rem 1.5rem;max-width:420px;width:92%;box-shadow:0 22px 60px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.18);position:relative}
@@ -284,20 +292,13 @@
     const PIXELS_PER_SIDE = 1000;
     const TOTAL_PIXELS = PIXELS_PER_SIDE * PIXELS_PER_SIDE;
 
-    /* ===== DEMO CLAIMED PIXELS ===== */
-    const claimedPixels = new Set([500500, 250250]);
-    const pixelData = {
-      500500: {
-        title: "The Viral $1 Wall",
-        url: location.origin,
-        image: "https://dummyimage.com/160x160/00d4ff-ff6fd8.png&text=Viral+Wall"
-      },
-      250250: {
-        title: "Demo Sponsor",
-        url: "https://example.com",
-        image: "https://dummyimage.com/160x160/ffcc70-111.png&text=DEMO"
-      }
-    };
+    /* DataNaut demo cluster – смени с реални URL-и */
+    const DATANAUT_LOGO_URL = "https://dummyimage.com/256x256/ffffff/111.png&text=DataNaut";
+    const DATANAUT_URL = "https://example.com/datanaut";
+
+    /* ===== CLAIMED STORAGE (empty, clusters will fill it) ===== */
+    const claimedPixels = new Set();
+    const pixelData = {};
 
     /* ===== DOM ===== */
     const pixelCanvas = document.getElementById("pixelCanvas");
@@ -322,38 +323,73 @@
     let archiveMode = false;
     let hoverPixelId = null;
 
-    /* ===== CANVAS RENDER (EMPTY GRID) ===== */
-    function initCanvas(){
-      const ctx = pixelCanvas.getContext("2d");
-      pixelCanvas.width = PIXELS_PER_SIDE;
-      pixelCanvas.height = PIXELS_PER_SIDE;
-
-      // 1) uniform background
-      ctx.fillStyle = "#151515";
-      ctx.fillRect(0,0,PIXELS_PER_SIDE,PIXELS_PER_SIDE);
-
-      // 2) subtle grid (every 10px)
-      ctx.strokeStyle = "rgba(255,255,255,0.03)";
-      ctx.lineWidth = 1;
-      for(let x=0;x<PIXELS_PER_SIDE;x+=10){ctx.beginPath();ctx.moveTo(x+0.5,0);ctx.lineTo(x+0.5,PIXELS_PER_SIDE);ctx.stroke();}
-      for(let y=0;y<PIXELS_PER_SIDE;y+=10){ctx.beginPath();ctx.moveTo(0,y+0.5);ctx.lineTo(PIXELS_PER_SIDE,y+0.5);ctx.stroke();}
-
-      // 3) mark claimed pixels (slightly brighter)
-      claimedPixels.forEach(id=>{
-        const {x,y}=idToCoords(id);
-        ctx.fillStyle="rgba(255,255,255,0.7)";
-        ctx.fillRect(x,y,1,1);
-      });
-
-      filledCountElement.textContent = claimedPixels.size.toString();
-    }
-
     /* ===== HELPERS ===== */
     function idToCoords(id){const index=id-1;const y=Math.floor(index/PIXELS_PER_SIDE);const x=index%PIXELS_PER_SIDE;return {x,y};}
     function coordsToId(x,y){if(x<0||x>=PIXELS_PER_SIDE||y<0||y>=PIXELS_PER_SIDE)return null;return y*PIXELS_PER_SIDE+x+1;}
     function updateTooltipPosition(e){const r=pixelCanvas.getBoundingClientRect();tooltip.style.left=`${e.clientX-r.left}px`;tooltip.style.top=`${e.clientY-r.top}px`;}
     function pixelLink(id){return `${location.origin}${location.pathname}#pixel=${id}`;}
     function openPixelFromHash(){const m=location.hash.match(/pixel=(\d+)/);if(!m)return;const id=parseInt(m[1],10);if(id>=1&&id<=TOTAL_PIXELS){openModalForPixel(id);}}
+
+    // Mark a rectangular cluster as claimed and assign data to each pixel
+    function markClusterClaimed(x, y, w, h, dataObj) {
+      for (let iy = y; iy < y + h; iy++) {
+        for (let ix = x; ix < x + w; ix++) {
+          const id = coordsToId(ix, iy);
+          if (id) {
+            claimedPixels.add(id);
+            pixelData[id] = dataObj;
+          }
+        }
+      }
+    }
+
+    // Draw image into the canvas and mark the cluster as claimed
+    function addImageClusterToCanvas(ctx, x, y, w, h, imageUrl, dataObj, onDone) {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => {
+        ctx.drawImage(img, x, y, w, h);
+        markClusterClaimed(x, y, w, h, dataObj);
+        if (onDone) onDone();
+      };
+      img.onerror = () => {
+        console.warn("Image failed to load:", imageUrl);
+        markClusterClaimed(x, y, w, h, dataObj);
+        if (onDone) onDone();
+      };
+      img.src = imageUrl;
+    }
+
+    /* ===== CANVAS RENDER (EMPTY + DEMO CLUSTER) ===== */
+    function initCanvas(){
+      const ctx = pixelCanvas.getContext("2d");
+      pixelCanvas.width = PIXELS_PER_SIDE;
+      pixelCanvas.height = PIXELS_PER_SIDE;
+
+      // 1) empty background
+      ctx.fillStyle = "#151515";
+      ctx.fillRect(0,0,PIXELS_PER_SIDE,PIXELS_PER_SIDE);
+
+      // 2) subtle grid
+      ctx.strokeStyle = "rgba(255,255,255,0.03)";
+      ctx.lineWidth = 1;
+      for(let x=0;x<PIXELS_PER_SIDE;x+=10){ctx.beginPath();ctx.moveTo(x+0.5,0);ctx.lineTo(x+0.5,PIXELS_PER_SIDE);ctx.stroke();}
+      for(let y=0;y<PIXELS_PER_SIDE;y+=10){ctx.beginPath();ctx.moveTo(0,y+0.5);ctx.lineTo(PIXELS_PER_SIDE,y+0.5);ctx.stroke();}
+
+      // 3) DEMO cluster: DataNaut in the center (64x64)
+      const W = 64, H = 64;
+      const CX = Math.floor((PIXELS_PER_SIDE - W)/2);
+      const CY = Math.floor((PIXELS_PER_SIDE - H)/2);
+
+      const dataObj = { title: "DataNaut", url: DATANAUT_URL, image: DATANAUT_LOGO_URL };
+
+      addImageClusterToCanvas(ctx, CX, CY, W, H, DATANAUT_LOGO_URL, dataObj, () => {
+        filledCountElement.textContent = claimedPixels.size.toString();
+      });
+
+      // initial counter (in case image is slow)
+      filledCountElement.textContent = claimedPixels.size.toString();
+    }
 
     /* ===== INTERACTION ===== */
     function handleMouseMove(e){
@@ -410,9 +446,7 @@
         catch{modalCopyLinkBtn.textContent="⚠️ Copy failed";setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200);}
       };
 
-      // update hash for share
       history.replaceState(null,"",`#pixel=${id}`);
-
       modalBackdrop.style.display="flex";
     }
 
