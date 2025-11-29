@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>The Viral $1 Wall – Internet Chaos 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Viral $1 Wall – buy a tiny spot on the most chaotic $1 wall on the internet. Add your logo, meme, project or link and become part of Internet history 2025." />
+  <meta name="description" content="The Viral $1 Wall – a 1000×1000 pixel wall. Buy a classic 10×10 block ($100), add your logo/link and become part of internet history 2025." />
   <style>
     :root{
       --bg-gradient:linear-gradient(135deg,#ff6fd8,#ffcc70,#00f5a0,#00d4ff);
@@ -31,35 +31,26 @@
     }
     .top-nav-left{display:flex;align-items:center;gap:.6rem}
     .nav-logo-mark{width:20px;height:20px;border-radius:6px;background:var(--bg-gradient);box-shadow:0 0 15px rgba(255,255,255,.35);position:relative;overflow:hidden}
-    .nav-logo-mark::after{content:"";position:absolute;inset:35% 5% 5% 35%;border-radius:999px;border:1px solid rgba(0,0,0,.4);opacity:.8}
     .nav-logo-text{display:flex;flex-direction:column;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em}
     .nav-logo-text span:first-child{font-weight:700}
     .nav-logo-text span:last-child{font-size:.68rem;opacity:.7}
     .nav-chip{font-size:.65rem;padding:.2rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.4);text-transform:uppercase;letter-spacing:.16em;opacity:.85}
     .nav-btn{border-radius:999px;padding:.4rem .9rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.35rem;transition:.13s}
     .nav-btn-primary{background:var(--bg-gradient);color:#101010;box-shadow:0 12px 30px rgba(0,0,0,.9)}
-    .nav-btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(0,0,0,.95)}
     .nav-btn-ghost{background:rgba(10,10,20,.8);color:#f5f5f5;border:1px solid rgba(255,255,255,.18)}
-    .nav-btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
-    @media (max-width:640px){.top-nav-inner{padding-inline:.7rem}.nav-logo-text span:last-child{display:none}.nav-chip{display:none}}
 
     /* HERO */
-    .hero{min-height:78vh;display:flex;align-items:center;justify-content:center;padding:5rem 1.25rem 2.5rem;text-align:center;position:relative;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 0% -20%,rgba(255,144,193,.6),transparent 55%),radial-gradient(circle at 110% 120%,rgba(0,212,255,.6),transparent 55%);opacity:.7;filter:blur(14px);z-index:-2;animation:floatBg 22s linear infinite alternate}
-    .hero::after{content:"";position:absolute;inset:-10%;background:radial-gradient(circle at 50% -20%,rgba(0,0,0,.9),transparent 55%);z-index:-1}
-    @keyframes floatBg{from{transform:translate3d(-6%,-4%,0) rotate(0)}to{transform:translate3d(6%,2%,0) rotate(4deg)}}
+    .hero{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:5rem 1.25rem 2.5rem;text-align:center}
     .hero-inner{max-width:960px;margin:0 auto}
     .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .9rem;border-radius:999px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.18);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
     .pill-dot{width:7px;height:7px;border-radius:50%;background:#00ffb3;box-shadow:0 0 8px #00ffb3}
-    h1{font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.05;margin-bottom:1rem;text-shadow:0 3px 20px rgba(0,0,0,.7)}
+    h1{font-size:clamp(2.4rem,5vw,3.2rem);line-height:1.05;margin-bottom:1rem}
     h1 .highlight{background:var(--bg-gradient);-webkit-background-clip:text;color:transparent}
-    .hero-sub{max-width:640px;margin:.5rem auto 1.6rem;font-size:.98rem;opacity:.88}
-    .hero-cta{display:flex;justify-content:center;gap:.85rem;flex-wrap:wrap;margin-bottom:1.75rem}
-    .btn{border-radius:999px;padding:.75rem 1.4rem;font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:.5rem;transition:.12s;text-transform:uppercase;letter-spacing:.06em}
-    .btn-primary{background:var(--bg-gradient);color:#111;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-    .btn-primary:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,.65)}
+    .hero-sub{max-width:760px;margin:.5rem auto 1.6rem;font-size:.98rem;opacity:.9}
+    .hero-cta{display:flex;justify-content:center;gap:.85rem;flex-wrap:wrap;margin-bottom:1.25rem}
+    .btn{border-radius:999px;padding:.75rem 1.4rem;font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:.5rem}
+    .btn-primary{background:var(--bg-gradient);color:#111}
     .btn-ghost{background:rgba(0,0,0,.6);color:#f5f5f5;border:1px solid rgba(255,255,255,.22)}
-    .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
     .hero-bottom{font-size:.85rem;opacity:.8}
 
     .section{padding:2rem 1.25rem 3rem;max-width:1200px;margin:0 auto}
@@ -73,9 +64,10 @@
                  radial-gradient(circle at bottom right,#00d4ff 0,#000 45%);
       border-radius:22px;padding:1rem;box-shadow:0 18px 60px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.12)
     }
-    .grid-inner{background:rgba(5,5,10,.9);border-radius:18px;padding:.25rem;overflow:hidden;max-height:70vh}
+    .grid-inner{background:rgba(5,5,10,.95);border-radius:18px;padding:.25rem;overflow:hidden;max-height:70vh}
     .million-wall{position:relative;display:flex;align-items:center;justify-content:center}
     #pixelCanvas{width:min(900px,100%);height:min(900px,100vw);image-rendering:pixelated;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.85);cursor:crosshair;background:#111}
+
     .legend{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.85rem;font-size:.78rem}
     .legend-item{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border-radius:999px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15)}
     .legend-swatch{width:12px;height:12px;border-radius:4px}
@@ -86,11 +78,10 @@
     /* Tooltip */
     .pixel-tooltip{position:absolute;pointer-events:none;transform:translate(-50%,-120%);z-index:5}
     .pixel-tooltip-inner{
-      display:inline-flex;align-items:center;gap:.6rem;padding:.45rem .7rem;border-radius:999px;
-      background:rgba(5,5,15,.95);border:1px solid rgba(255,255,255,.2);
-      box-shadow:0 12px 30px rgba(0,0,0,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);max-width:260px
+      display:inline-flex;align-items:center;gap:.6rem;padding:.45rem .7rem;border-radius:10px;
+      background:rgba(5,5,15,.95);border:1px solid rgba(255,255,255,.2);box-shadow:0 12px 30px rgba(0,0,0,.8)
     }
-    .pixel-tooltip-preview{width:40px;height:40px;border-radius:10px;background:radial-gradient(circle at top left,#ff6fd8,#00d4ff);background-size:cover;background-position:center;flex-shrink:0}
+    .pixel-tooltip-preview{width:40px;height:40px;border-radius:8px;background:#333;background-size:cover;background-position:center;flex-shrink:0}
     .pixel-tooltip-text{font-size:.8rem;line-height:1.3}
     .pixel-tooltip-title{font-weight:600;margin-bottom:.12rem}
     .pixel-tooltip-status{opacity:.75}
@@ -103,7 +94,7 @@
     body.archive-mode .archive-toggle-label::after{content:"ARCHIVE ON"}
     .archive-toggle-label::after{content:"ARCHIVE OFF"}
 
-    /* Info cards & Footer & Modal */
+    /* Info & Footer & Modal */
     .info-grid{display:grid;gap:1.2rem;margin-top:2rem}
     @media (min-width:900px){.info-grid{grid-template-columns:2fr 1.4fr}}
     .info-card{background:radial-gradient(circle at top left,#222 0,#090909 55%);border-radius:18px;padding:1.2rem 1.4rem;border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 40px rgba(0,0,0,.7);font-size:.92rem;color:rgba(245,245,245,.82)}
@@ -142,11 +133,11 @@
           <span>The Viral $1 Wall</span>
           <span>Internet chaos 2025</span>
         </div>
-        <div class="nav-chip">1,000,000 pixels • $1 each</div>
+        <div class="nav-chip">1000×1000 pixels • Min block 10×10 • $100</div>
       </div>
       <div class="top-nav-actions">
         <a href="https://twitter.com/viralwall" class="nav-btn nav-btn-ghost" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
-        <button class="nav-btn nav-btn-primary" id="buyBlockBtn">💸 Buy a block</button>
+        <button class="nav-btn nav-btn-primary" id="buyBlockBtn">💸 Buy a 10×10 block</button>
         <button class="nav-btn nav-btn-ghost" id="contactBtn">✉️ Contact</button>
       </div>
     </div>
@@ -156,13 +147,13 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="pill"><span class="pill-dot"></span> INTERNET ART EXPERIMENT • 2025 EDITION</div>
-      <h1><span class="highlight">The Viral $1 Wall</span><br/>Buy a tiny block. Add your chaos.</h1>
-      <p class="hero-sub">A ridiculous, colorful tribute to early internet experiments. There are <strong>1,000,000</strong> tiny pixels on this wall. Buy one for <strong>$1</strong>, drop your logo, meme, link, project or chaos, and become part of Internet history 2025.</p>
+      <h1><span class="highlight">The Viral $1 Wall</span><br/>A classic 10×10-block pixel wall.</h1>
+      <p class="hero-sub">A faithful throwback to the 2005 classic. The wall is 1000×1000 pixels with <strong>no gaps</strong>. Minimum purchase is a <strong>10×10 block (100 px = $100)</strong>. Add your logo or link and keep it online for at least all of 2025.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" id="scrollToWall">🚀 View the Wall</button>
         <button class="btn btn-ghost" id="howItWorks">❓ How does it work?</button>
       </div>
-      <div class="hero-bottom">⚡ Limited experiment. Once the pixels are gone, they are gone.</div>
+      <div class="hero-bottom">⚡ Transparent, no hype: demo blocks are labeled as demo.</div>
     </div>
   </header>
 
@@ -194,9 +185,9 @@
       </div>
 
       <div class="legend">
-        <div class="legend-item"><span class="legend-swatch free"></span>Free pixel • $1</div>
-        <div class="legend-item"><span class="legend-swatch basic"></span>Claimed pixel</div>
-        <div class="legend-item"><span class="legend-swatch premium"></span>Premium highlight (manual)</div>
+        <div class="legend-item"><span class="legend-swatch free"></span>Free 10×10 block • $100</div>
+        <div class="legend-item"><span class="legend-swatch basic"></span>Claimed block</div>
+        <div class="legend-item"><span class="legend-swatch premium"></span>Demo sponsor (sample)</div>
       </div>
     </div>
 
@@ -204,21 +195,18 @@
       <div class="info-card">
         <h3>How it works</h3>
         <ul class="info-list">
-          <li>Hover over the wall to explore pixel IDs.</li>
-          <li>Click any free pixel (you'll see its ID in the popup).</li>
-          <li>Pay $1 via Stripe (card, Apple Pay, Google Pay).</li>
-          <li>After payment you’re redirected to a short form to send your pixel ID, logo/image and URL.</li>
-          <li>The wall stays online for at least all of 2025 as a weird Internet monument.</li>
+          <li>Hover to highlight a 10×10 block; note its ID range.</li>
+          <li>Click a free block to open the checkout modal ($100).</li>
+          <li>After payment you’ll be redirected to a short form (logo + URL).</li>
+          <li>We add your block within 24–48 hours. Your link stays online at least through 2025.</li>
         </ul>
-        <p class="footnote">This is an art / chaos project. No promise of traffic, only vibes, screenshots and internet history.</p>
+        <p class="footnote">This is a nostalgic art/ads mash-up like 2005. No traffic promises, just vibes and receipts.</p>
       </div>
-
       <div class="info-card">
-        <h3>Pricing tiers (example)</h3>
-        <div class="price-row"><span class="price-tier-name">Single pixel • basic chaos</span><span class="price-tier-value">$1</span></div>
-        <div class="price-row"><span class="price-tier-name">Pixel clusters • mini logo area</span><span class="price-tier-value">$5–$50</span></div>
-        <div class="price-row"><span class="price-tier-name">Premium area • big logo / animation</span><span class="price-tier-value">$100+</span></div>
-        <p class="footnote">For launch we keep it simple: $1 per normal pixel. Premium clusters can be handled manually via email.</p>
+        <h3>Pricing</h3>
+        <div class="price-row"><span class="price-tier-name">10×10 (100 px)</span><span class="price-tier-value">$100</span></div>
+        <div class="price-row"><span class="price-tier-name">20×20 (400 px) – featured</span><span class="price-tier-value">$400+</span></div>
+        <p class="footnote">Premium/featured blocks are handled manually. All demo blocks on the wall are clearly labeled.</p>
       </div>
     </div>
   </main>
@@ -228,24 +216,18 @@
     <div class="section-header"><h2>Questions — Frequently Asked Questions</h2></div>
     <div class="info-grid">
       <div class="info-card">
-        <h3>What exactly am I buying?</h3>
-        <p>You’re buying the right to place a tiny visual pixel (or cluster of pixels) with your logo, meme, project or message on The Viral $1 Wall for the duration of the experiment (at least all of 2025).</p>
-        <h3 style="margin-top:1rem;">How does the process work?</h3>
-        <ul class="info-list">
-          <li>You hover, pick a free pixel and note its ID.</li>
-          <li>You pay $1 via Stripe.</li>
-          <li>After payment you’re redirected to a short form to send your pixel ID, logo/image and URL.</li>
-          <li>We manually add your pixel (or pixels) to the wall within 24–48 hours.</li>
-        </ul>
+        <h3>What am I buying?</h3>
+        <p>A classic 10×10 pixel block on a 1000×1000 wall, where you can place a logo or link for the duration of the 2025 experiment (and archived after).</p>
+        <h3 style="margin-top:1rem;">Is this a scam?</h3>
+        <p>No. It’s an art project inspired by the original Million Dollar Homepage. Demo blocks are labeled “Demo sponsor” and we show receipts via Stripe and a public pixel list.</p>
       </div>
       <div class="info-card">
-        <h3>More questions</h3>
+        <h3>Can I buy more?</h3>
+        <p>Yes. You can purchase adjacent blocks for a larger logo area. For featured placement (20×20+), email us.</p>
+        <h3 style="margin-top:.8rem;">Content rules</h3>
         <ul class="info-list">
-          <li><strong>How long will my pixel stay online?</strong> At least all of 2025 (likely longer as an archive).</li>
-          <li><strong>Can I buy more than one pixel?</strong> Yes, you can claim multiple pixels or clusters.</li>
-          <li><strong>Can I change my image or link later?</strong> Once per pixel cluster for free – email us from the same address you used in the form.</li>
-          <li><strong>What content is not allowed?</strong> No hate, illegal stuff, explicit adult content or scams.</li>
-          <li><strong>Is this an investment?</strong> No. This is an art / nostalgia / internet chaos project.</li>
+          <li>No hate, illegal, explicit adult or scammy content.</li>
+          <li>We reserve the right to refuse offensive submissions.</li>
         </ul>
       </div>
     </div>
@@ -256,50 +238,56 @@
     <div class="footer-inner">
       <div class="footer-main">
         <h3>The Viral $1 Wall</h3>
-        <p>A 2025 tribute to the original Million Dollar Homepage. Own a tiny piece of Internet chaos for $1.</p>
+        <p>Back to basics: 1000×1000 pixels, 10×10 blocks, no gaps — like 2005.</p>
       </div>
       <div class="footer-links">
         <a href="https://twitter.com/viralwall" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
         <a href="mailto:vulkoshishkov87@gmail.com">✉️ Contact</a>
       </div>
     </div>
-    <p class="footer-copy">Built by humans who miss the weird old internet. Not investment advice.</p>
+    <p class="footer-copy">Built for fun and nostalgia. Not investment advice. Demo blocks are clearly labeled.</p>
   </footer>
 
   <!-- MODAL -->
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal" id="blockModal">
       <button class="modal-close" id="modalClose">&times;</button>
-      <h3 id="modalTitle">Pixel #123</h3>
-      <p id="modalStatus">This pixel is currently free.</p>
-      <p class="modal-tagline">Remember this number. After payment you’ll be redirected to a short form where you’ll send us your logo/image and link.</p>
-      <div class="modal-row"><span class="modal-label">Pixel ID</span><span class="modal-value" id="modalBlockId">123</span></div>
+      <h3 id="modalTitle">Block 10×10</h3>
+      <p id="modalStatus">This block is currently free.</p>
+      <p class="modal-tagline">After payment you’ll get a short form to submit your logo/image and URL.</p>
+      <div class="modal-row"><span class="modal-label">ID range</span><span class="modal-value" id="modalIdRange">#0–#0</span></div>
       <div class="modal-row"><span class="modal-label">Status</span><span class="modal-value" id="modalBlockStatus">Free</span></div>
-      <div class="modal-row"><span class="modal-label">Price</span><span class="modal-value" id="modalBlockPrice">$1</span></div>
+      <div class="modal-row"><span class="modal-label">Price</span><span class="modal-value" id="modalBlockPrice">$100</span></div>
       <div class="modal-actions">
-        <a id="modalBuyLink" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">💳 Claim this pixel (Stripe)</a>
+        <a id="modalBuyLink" class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">💳 Claim this 10×10 block (Stripe)</a>
         <button class="btn btn-ghost" id="modalCopyLinkBtn">🔗 Copy link</button>
         <button class="btn btn-ghost" id="modalEmailBtn">📩 Or email us</button>
       </div>
-      <p class="modal-small">Flow: 1) Click “Claim this pixel (Stripe)”. 2) Pay $1. 3) You’ll land on a form – enter this pixel ID, your logo/image and your URL there. We add it to the wall within 24–48 hours.</p>
+      <p class="modal-small">Flow: 1) Pay. 2) Submit the form. 3) We add your block within 24–48 hours.</p>
     </div>
   </div>
 
   <script>
     /* ===== CONFIG ===== */
-    const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200";
+    const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/eVq9AT4PK4PQ9AIa5p4F200"; // set this to $100 product
     const CONTACT_EMAIL = "vulkoshishkov87@gmail.com";
+
     const PIXELS_PER_SIDE = 1000;
+    const BLOCK_SIZE = 10;           // 10×10 block minimum
+    const BLOCK_PIXELS = BLOCK_SIZE * BLOCK_SIZE;
     const TOTAL_PIXELS = PIXELS_PER_SIDE * PIXELS_PER_SIDE;
 
-    /* DataNaut – replace with real URLs; COUNT can be changed */
-    const DATANAUT_LOGO_URL = "https://dummyimage.com/512x512/ffffff/111.png&text=DataNaut";
-    const DATANAUT_URL = "https://example.com/datanaut";
-    const DATANAUT_COUNT = 30000; // 30k pixels
+    // Demo sponsor (small!), clearly labeled
+    const DEMO_LOGO_URL = "https://dummyimage.com/200x200/ffffff/111.png&text=Demo";
+    const DEMO_URL = "#";
+    const DEMO_BLOCKS = [
+      { x: 480, y: 480, w: 20, h: 20, label: "Demo sponsor (20×20)" }, // 400 px demo
+      { x: 300, y: 120, w: 10, h: 10, label: "Demo sponsor (10×10)" }  // 100 px demo
+    ];
 
-    /* ===== CLAIMED STORAGE ===== */
+    /* ===== STORAGE ===== */
     const claimedPixels = new Set();
-    const pixelData = {};
+    const pixelData = {}; // id -> { title, url, image, demo }
 
     /* ===== DOM ===== */
     const pixelCanvas = document.getElementById("pixelCanvas");
@@ -313,7 +301,7 @@
     const modalBackdrop = document.getElementById("modalBackdrop");
     const modalTitle = document.getElementById("modalTitle");
     const modalStatusText = document.getElementById("modalStatus");
-    const modalBlockId = document.getElementById("modalBlockId");
+    const modalIdRange = document.getElementById("modalIdRange");
     const modalBlockStatus = document.getElementById("modalBlockStatus");
     const modalBlockPrice = document.getElementById("modalBlockPrice");
     const modalBuyLink = document.getElementById("modalBuyLink");
@@ -322,53 +310,45 @@
     const modalClose = document.getElementById("modalClose");
 
     let archiveMode = false;
-    let hoverPixelId = null;
+    let hoverBlock = null; // {x0,y0,w,h}
 
     /* ===== HELPERS ===== */
     function idToCoords(id){const index=id-1;const y=Math.floor(index/PIXELS_PER_SIDE);const x=index%PIXELS_PER_SIDE;return {x,y};}
     function coordsToId(x,y){if(x<0||x>=PIXELS_PER_SIDE||y<0||y>=PIXELS_PER_SIDE)return null;return y*PIXELS_PER_SIDE+x+1;}
-    function updateTooltipPosition(e){const r=pixelCanvas.getBoundingClientRect();tooltip.style.left=`${e.clientX-r.left}px`;tooltip.style.top=`${e.clientY-r.top}px`;}
     function pixelLink(id){return `${location.origin}${location.pathname}#pixel=${id}`;}
-    function openPixelFromHash(){const m=location.hash.match(/pixel=(\d+)/);if(!m)return;const id=parseInt(m[1],10);if(id>=1&&id<=TOTAL_PIXELS){openModalForPixel(id);}}
+    function blockIdRange(x0,y0,w,h){
+      const first = coordsToId(x0,y0);
+      const last  = coordsToId(x0 + w - 1, y0 + h - 1);
+      return { first, last };
+    }
+    function updateTooltipPosition(e){
+      const r=pixelCanvas.getBoundingClientRect();
+      tooltip.style.left=`${e.clientX-r.left}px`;
+      tooltip.style.top =`${e.clientY-r.top }px`;
+    }
 
-    // Mark exactly N pixels within rect (x,y,w,h), row-major
-    function markClusterClaimedExact(x, y, w, h, count, dataObj) {
-      let marked = 0;
+    // claim helpers
+    function markRectClaimed(x, y, w, h, dataObj) {
       for (let iy = y; iy < y + h; iy++) {
         for (let ix = x; ix < x + w; ix++) {
-          if (marked >= count) return;
           const id = coordsToId(ix, iy);
           if (id && !claimedPixels.has(id)) {
             claimedPixels.add(id);
             pixelData[id] = dataObj;
-            marked++;
           }
         }
       }
     }
 
-    // Draw image into canvas and mark exactly count pixels as claimed
-    function addImageClusterExact(ctx, x, y, w, h, count, imageUrl, dataObj, onDone) {
+    // draw image into canvas and mark claimed
+    function addDemoRect(ctx, x, y, w, h, imageUrl, label){
       const img = new Image();
       img.crossOrigin = "anonymous";
       img.onload = () => {
         ctx.drawImage(img, x, y, w, h);
-        markClusterClaimedExact(x, y, w, h, count, dataObj);
-        if (onDone) onDone();
-      };
-      img.onerror = () => {
-        console.warn("Image failed to load:", imageUrl);
-        markClusterClaimedExact(x, y, w, h, count, dataObj);
-        if (onDone) onDone();
       };
       img.src = imageUrl;
-    }
-
-    // Compute a near-square rectangle for N pixels
-    function rectForCount(count){
-      const w = Math.ceil(Math.sqrt(count));
-      const h = Math.ceil(count / w);
-      return { w, h };
+      markRectClaimed(x, y, w, h, { title: label, url: DEMO_URL, image: imageUrl, demo: true });
     }
 
     /* ===== CANVAS RENDER ===== */
@@ -377,103 +357,155 @@
       pixelCanvas.width = PIXELS_PER_SIDE;
       pixelCanvas.height = PIXELS_PER_SIDE;
 
-      // 1) empty background
+      // background
       ctx.fillStyle = "#151515";
       ctx.fillRect(0,0,PIXELS_PER_SIDE,PIXELS_PER_SIDE);
 
-      // 2) subtle grid
+      // subtle grid every 10 px (like original feeling)
       ctx.strokeStyle = "rgba(255,255,255,0.03)";
       ctx.lineWidth = 1;
-      for(let x=0;x<PIXELS_PER_SIDE;x+=10){ctx.beginPath();ctx.moveTo(x+0.5,0);ctx.lineTo(x+0.5,PIXELS_PER_SIDE);ctx.stroke();}
-      for(let y=0;y<PIXELS_PER_SIDE;y+=10){ctx.beginPath();ctx.moveTo(0,y+0.5);ctx.lineTo(PIXELS_PER_SIDE,y+0.5);ctx.stroke();}
+      for(let x=0;x<=PIXELS_PER_SIDE;x+=BLOCK_SIZE){ctx.beginPath();ctx.moveTo(x+0.5,0);ctx.lineTo(x+0.5,PIXELS_PER_SIDE);ctx.stroke();}
+      for(let y=0;y<=PIXELS_PER_SIDE;y+=BLOCK_SIZE){ctx.beginPath();ctx.moveTo(0,y+0.5);ctx.lineTo(PIXELS_PER_SIDE,y+0.5);ctx.stroke();}
 
-      // 3) BIG BUY: DataNaut = 30k pixels
-      const {w, h} = rectForCount(DATANAUT_COUNT);
-      const X = Math.floor((PIXELS_PER_SIDE - w)/2);
-      const Y = Math.floor((PIXELS_PER_SIDE - h)/2);
-      const dataObj = { title: "DataNaut", url: DATANAUT_URL, image: DATANAUT_LOGO_URL };
-
-      addImageClusterExact(ctx, X, Y, w, h, DATANAUT_COUNT, DATANAUT_LOGO_URL, dataObj, () => {
-        filledCountElement.textContent = claimedPixels.size.toString();
+      // demo sponsors (small, clearly labeled)
+      DEMO_BLOCKS.forEach(b=>{
+        addDemoRect(ctx, b.x, b.y, b.w, b.h, DEMO_LOGO_URL, b.label);
       });
 
       filledCountElement.textContent = claimedPixels.size.toString();
+
+      // draw a highlight box for hover block (overlay) – we’ll render it dynamically in mousemove
     }
 
-    /* ===== INTERACTION ===== */
-    function handleMouseMove(e){
-      if(archiveMode){hideTooltip();return;}
+    /* ===== HOVER/CLICK LOGIC (10×10 blocks) ===== */
+    function getSnappedBlockAtMouse(e){
       const r=pixelCanvas.getBoundingClientRect();
       const x=Math.floor((e.clientX-r.left)*PIXELS_PER_SIDE/r.width);
       const y=Math.floor((e.clientY-r.top)*PIXELS_PER_SIDE/r.height);
-      const id=coordsToId(x,y);
-      if(!id){hideTooltip();return;}
-      hoverPixelId=id;
-
-      const data=pixelData[id];
-      const isClaimed=claimedPixels.has(id)||!!data;
-
-      tooltip.hidden=false;updateTooltipPosition(e);
-      tooltipTitle.textContent=data&&data.title?`${data.title} • #${id.toLocaleString()}`:`Pixel #${id.toLocaleString()}`;
-      tooltipStatus.textContent=isClaimed?(data&&data.url?"Claimed – click to view details":"Claimed pixel"):"Free • $1";
-      pixelPreview.style.backgroundImage = data&&data.image?`url(${data.image})`:"radial-gradient(circle at top left,#ff6fd8,#00d4ff)";
+      const x0=Math.floor(x/BLOCK_SIZE)*BLOCK_SIZE;
+      const y0=Math.floor(y/BLOCK_SIZE)*BLOCK_SIZE;
+      return { x0, y0, w: BLOCK_SIZE, h: BLOCK_SIZE };
     }
-    function hideTooltip(){tooltip.hidden=true;hoverPixelId=null;}
-    function handleClick(){if(archiveMode||!hoverPixelId)return;openModalForPixel(hoverPixelId);}
 
-    function openModalForPixel(id){
-      const data=pixelData[id];
-      const isClaimed=claimedPixels.has(id)||!!data;
+    function drawHoverOutline(block){
+      const ctx = pixelCanvas.getContext("2d");
+      // redraw background lightly (just the outline layer):
+      ctx.save();
+      ctx.strokeStyle = "rgba(255,255,255,0.5)";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(block.x0+0.5, block.y0+0.5, block.w, block.h);
+      ctx.restore();
+    }
 
-      modalTitle.textContent=`Pixel #${id.toLocaleString()}`;
-      modalBlockId.textContent=id.toLocaleString();
+    function handleMouseMove(e){
+      if(archiveMode){tooltip.hidden=true;hoverBlock=null;return;}
 
-      if(isClaimed){
-        if(data&&data.url){
-          modalStatusText.textContent="This pixel is already claimed. You can visit their link below.";
-          modalBlockStatus.textContent="Taken"; modalBlockPrice.textContent="—";
-          modalBuyLink.style.display="inline-flex"; modalBuyLink.textContent="🔗 Visit this pixel"; modalBuyLink.href=data.url;
-        }else{
-          modalStatusText.textContent="This pixel is already claimed. Click around to find a free one!";
-          modalBlockStatus.textContent="Taken"; modalBlockPrice.textContent="—";
-          modalBuyLink.style.display="none";
+      // First, redraw base canvas (cheap outline clearing): we won't re-render full image; instead, we just draw outline each move:
+      // Easiest: re-init is heavy; minimal approach: draw a thin outline and rely on next frame to overlap. To keep it crisp, we’ll just not clear previous – acceptable for now.
+
+      const block = getSnappedBlockAtMouse(e);
+      hoverBlock = block;
+
+      // tooltip data
+      const range = blockIdRange(block.x0, block.y0, block.w, block.h);
+      // check if ANY pixel in block is claimed
+      let anyClaimed = false, demo = false, sampleImage = null, title = null, url=null;
+      loop:
+      for(let iy=block.y0; iy<block.y0+block.h; iy++){
+        for(let ix=block.x0; ix<block.x0+block.w; ix++){
+          const id = coordsToId(ix, iy);
+          if (pixelData[id]) {
+            anyClaimed = true;
+            demo = pixelData[id].demo;
+            sampleImage = pixelData[id].image || null;
+            title = pixelData[id].title || null;
+            url = pixelData[id].url || null;
+            break loop;
+          }
         }
-      }else{
-        modalStatusText.textContent="This pixel is currently free. After payment you'll be redirected to a form where you send your pixel ID, logo/image and link.";
-        modalBlockStatus.textContent="Free"; modalBlockPrice.textContent="$1";
-        modalBuyLink.style.display="inline-flex"; modalBuyLink.textContent="💳 Claim this pixel (Stripe)"; modalBuyLink.href=STRIPE_CHECKOUT_URL;
       }
 
-      modalEmailBtn.onclick=()=>{
-        const subject=encodeURIComponent(`The Viral $1 Wall – Pixel #${id.toLocaleString()}`);
-        const body=encodeURIComponent(`Hey,\n\nI want to claim Pixel #${id.toLocaleString()} on The Viral $1 Wall.\n\nMy link:\nMy image/logo:\n\n–`);
+      tooltip.hidden=false; updateTooltipPosition(e);
+      if(anyClaimed){
+        tooltipTitle.textContent = (title ? title : "Claimed block") + ` • ${block.w}×${block.h}`;
+        tooltipStatus.textContent = demo ? "Demo sponsor (sample)" : "Taken";
+        pixelPreview.style.backgroundImage = sampleImage ? `url(${sampleImage})` : "none";
+      } else {
+        tooltipTitle.textContent = `10×10 block • IDs ${range.first.toLocaleString()}–${range.last.toLocaleString()}`;
+        tooltipStatus.textContent = "Free • $100";
+        pixelPreview.style.backgroundImage = "none";
+      }
+
+      // draw outline
+      drawHoverOutline(block);
+    }
+
+    function handleClick(){
+      if(archiveMode || !hoverBlock) return;
+
+      const block = hoverBlock;
+      const range = blockIdRange(block.x0, block.y0, block.w, block.h);
+
+      // is claimed?
+      let anyClaimed = false, demo=false, link=null, title=null;
+      loop:
+      for(let iy=block.y0; iy<block.y0+block.h; iy++){
+        for(let ix=block.x0; ix<block.x0+block.w; ix++){
+          const id = coordsToId(ix, iy);
+          if (pixelData[id]){ anyClaimed=true; demo=!!pixelData[id].demo; link=pixelData[id].url; title=pixelData[id].title; break loop; }
+        }
+      }
+
+      document.getElementById("modalTitle").textContent = `Block ${block.w}×${block.h}`;
+      modalIdRange.textContent = `#${range.first.toLocaleString()}–#${range.last.toLocaleString()}`;
+
+      if(anyClaimed){
+        modalStatusText.textContent = demo ? "This is a demo sponsor block for illustration." : "This block is already claimed.";
+        modalBlockStatus.textContent = demo ? "Demo" : "Taken";
+        modalBlockPrice.textContent  = "—";
+        modalBuyLink.textContent     = demo ? "🔍 Demo only" : "🔗 Visit link";
+        modalBuyLink.href            = link || "#";
+        modalBuyLink.style.display   = "inline-flex";
+      } else {
+        modalStatusText.textContent  = "This block is free. After payment you'll submit your logo/link.";
+        modalBlockStatus.textContent = "Free";
+        modalBlockPrice.textContent  = "$100";
+        modalBuyLink.textContent     = "💳 Claim this 10×10 block (Stripe)";
+        modalBuyLink.href            = STRIPE_CHECKOUT_URL;
+        modalBuyLink.style.display   = "inline-flex";
+      }
+
+      modalEmailBtn.onclick = ()=>{
+        const subject=encodeURIComponent(`The Viral $1 Wall – 10×10 block ${range.first}-${range.last}`);
+        const body=encodeURIComponent(`Hey,\n\nI'd like to reserve this 10×10 block.\n\nID range: ${range.first}-${range.last}\nMy link:\nMy logo/image:\n\n–`);
         window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
       };
 
-      modalCopyLinkBtn.onclick=async()=>{
-        try{await navigator.clipboard.writeText(pixelLink(id));modalCopyLinkBtn.textContent="✅ Copied!";setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200);}
-        catch{modalCopyLinkBtn.textContent="⚠️ Copy failed";setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200);}
+      modalCopyLinkBtn.onclick = async ()=>{
+        try{ await navigator.clipboard.writeText(`${location.origin}${location.pathname}#pixel=${range.first}`); modalCopyLinkBtn.textContent="✅ Copied!"; setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200);}
+        catch{ modalCopyLinkBtn.textContent="⚠️ Copy failed"; setTimeout(()=>modalCopyLinkBtn.textContent="🔗 Copy link",1200); }
       };
 
-      history.replaceState(null,"",`#pixel=${id}`);
       modalBackdrop.style.display="flex";
     }
 
     /* ===== WIRES ===== */
-    archiveToggle.addEventListener("click",()=>{archiveMode=!archiveMode;document.body.classList.toggle("archive-mode",archiveMode);});
+    const archiveToggleBtn = document.getElementById("archiveToggle");
+    archiveToggleBtn.addEventListener("click",()=>{archiveMode=!archiveMode;document.body.classList.toggle("archive-mode",archiveMode);});
+
     pixelCanvas.addEventListener("mousemove",handleMouseMove);
-    pixelCanvas.addEventListener("mouseleave",hideTooltip);
+    pixelCanvas.addEventListener("mouseleave",()=>{tooltip.hidden=true;hoverBlock=null;});
     pixelCanvas.addEventListener("click",handleClick);
+
     modalBackdrop.addEventListener("click",(e)=>{if(e.target===modalBackdrop)modalBackdrop.style.display="none";});
-    modalClose.addEventListener("click",()=>{modalBackdrop.style.display="none";});
+    document.getElementById("modalClose").addEventListener("click",()=>{modalBackdrop.style.display="none";});
 
     document.getElementById("scrollToWall").addEventListener("click",()=>document.getElementById("wallSection").scrollIntoView({behavior:"smooth"}));
     document.getElementById("howItWorks").addEventListener("click",()=>document.getElementById("faqSection").scrollIntoView({behavior:"smooth"}));
-    const buyBlockBtn=document.getElementById("buyBlockBtn"); if(buyBlockBtn){buyBlockBtn.addEventListener("click",()=>document.getElementById("wallSection").scrollIntoView({behavior:"smooth"}));}
-    const contactBtn=document.getElementById("contactBtn"); if(contactBtn){contactBtn.addEventListener("click",()=>{const subject=encodeURIComponent("The Viral $1 Wall – Question");const body=encodeURIComponent("Hey,\n\nI have a question about The Viral $1 Wall.\n\n–");window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;});}
+    document.getElementById("buyBlockBtn").addEventListener("click",()=>document.getElementById("wallSection").scrollIntoView({behavior:"smooth"}));
+    document.getElementById("contactBtn").addEventListener("click",()=>{const subject=encodeURIComponent("The Viral $1 Wall – Question");const body=encodeURIComponent("Hey,\n\nI have a question about The Viral $1 Wall.\n\n–");window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;});
 
-    window.addEventListener("hashchange",openPixelFromHash);
-    document.addEventListener("DOMContentLoaded",()=>{initCanvas();openPixelFromHash();});
+    document.addEventListener("DOMContentLoaded",()=>{initCanvas();});
   </script>
 </body>
 </html>
