@@ -225,7 +225,7 @@
 
   <!-- QUESTIONS -->
   <section class="section faq-section" id="faqSection">
-    <div class="section-header"><h2>Questions – Frequently Asked Chaos</h2></div>
+    <div class="section-header"><h2>Questions — Frequently Asked Questions</h2></div>
     <div class="info-grid">
       <div class="info-card">
         <h3>What exactly am I buying?</h3>
@@ -292,11 +292,12 @@
     const PIXELS_PER_SIDE = 1000;
     const TOTAL_PIXELS = PIXELS_PER_SIDE * PIXELS_PER_SIDE;
 
-    /* DataNaut demo cluster – смени с реални URL-и */
-    const DATANAUT_LOGO_URL = "https://dummyimage.com/256x256/ffffff/111.png&text=DataNaut";
+    /* DataNaut – replace with real URLs; COUNT can be changed */
+    const DATANAUT_LOGO_URL = "https://dummyimage.com/512x512/ffffff/111.png&text=DataNaut";
     const DATANAUT_URL = "https://example.com/datanaut";
+    const DATANAUT_COUNT = 30000; // 30k pixels
 
-    /* ===== CLAIMED STORAGE (empty, clusters will fill it) ===== */
+    /* ===== CLAIMED STORAGE ===== */
     const claimedPixels = new Set();
     const pixelData = {};
 
@@ -330,37 +331,47 @@
     function pixelLink(id){return `${location.origin}${location.pathname}#pixel=${id}`;}
     function openPixelFromHash(){const m=location.hash.match(/pixel=(\d+)/);if(!m)return;const id=parseInt(m[1],10);if(id>=1&&id<=TOTAL_PIXELS){openModalForPixel(id);}}
 
-    // Mark a rectangular cluster as claimed and assign data to each pixel
-    function markClusterClaimed(x, y, w, h, dataObj) {
+    // Mark exactly N pixels within rect (x,y,w,h), row-major
+    function markClusterClaimedExact(x, y, w, h, count, dataObj) {
+      let marked = 0;
       for (let iy = y; iy < y + h; iy++) {
         for (let ix = x; ix < x + w; ix++) {
+          if (marked >= count) return;
           const id = coordsToId(ix, iy);
-          if (id) {
+          if (id && !claimedPixels.has(id)) {
             claimedPixels.add(id);
             pixelData[id] = dataObj;
+            marked++;
           }
         }
       }
     }
 
-    // Draw image into the canvas and mark the cluster as claimed
-    function addImageClusterToCanvas(ctx, x, y, w, h, imageUrl, dataObj, onDone) {
+    // Draw image into canvas and mark exactly count pixels as claimed
+    function addImageClusterExact(ctx, x, y, w, h, count, imageUrl, dataObj, onDone) {
       const img = new Image();
       img.crossOrigin = "anonymous";
       img.onload = () => {
         ctx.drawImage(img, x, y, w, h);
-        markClusterClaimed(x, y, w, h, dataObj);
+        markClusterClaimedExact(x, y, w, h, count, dataObj);
         if (onDone) onDone();
       };
       img.onerror = () => {
         console.warn("Image failed to load:", imageUrl);
-        markClusterClaimed(x, y, w, h, dataObj);
+        markClusterClaimedExact(x, y, w, h, count, dataObj);
         if (onDone) onDone();
       };
       img.src = imageUrl;
     }
 
-    /* ===== CANVAS RENDER (EMPTY + DEMO CLUSTER) ===== */
+    // Compute a near-square rectangle for N pixels
+    function rectForCount(count){
+      const w = Math.ceil(Math.sqrt(count));
+      const h = Math.ceil(count / w);
+      return { w, h };
+    }
+
+    /* ===== CANVAS RENDER ===== */
     function initCanvas(){
       const ctx = pixelCanvas.getContext("2d");
       pixelCanvas.width = PIXELS_PER_SIDE;
@@ -376,18 +387,16 @@
       for(let x=0;x<PIXELS_PER_SIDE;x+=10){ctx.beginPath();ctx.moveTo(x+0.5,0);ctx.lineTo(x+0.5,PIXELS_PER_SIDE);ctx.stroke();}
       for(let y=0;y<PIXELS_PER_SIDE;y+=10){ctx.beginPath();ctx.moveTo(0,y+0.5);ctx.lineTo(PIXELS_PER_SIDE,y+0.5);ctx.stroke();}
 
-      // 3) DEMO cluster: DataNaut in the center (64x64)
-      const W = 64, H = 64;
-      const CX = Math.floor((PIXELS_PER_SIDE - W)/2);
-      const CY = Math.floor((PIXELS_PER_SIDE - H)/2);
-
+      // 3) BIG BUY: DataNaut = 30k pixels
+      const {w, h} = rectForCount(DATANAUT_COUNT);
+      const X = Math.floor((PIXELS_PER_SIDE - w)/2);
+      const Y = Math.floor((PIXELS_PER_SIDE - h)/2);
       const dataObj = { title: "DataNaut", url: DATANAUT_URL, image: DATANAUT_LOGO_URL };
 
-      addImageClusterToCanvas(ctx, CX, CY, W, H, DATANAUT_LOGO_URL, dataObj, () => {
+      addImageClusterExact(ctx, X, Y, w, h, DATANAUT_COUNT, DATANAUT_LOGO_URL, dataObj, () => {
         filledCountElement.textContent = claimedPixels.size.toString();
       });
 
-      // initial counter (in case image is slow)
       filledCountElement.textContent = claimedPixels.size.toString();
     }
 
